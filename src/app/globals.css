@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens lifted directly from the approved visual direction.
+ * Palette: Pine (deep bottle green) on Ivory, Black utility surfaces.
+ * Typography: Scheherazade New (serif, display) + Inter (sans, UI/body).
+ */
+@theme {
+  --font-serif: var(--font-scheherazade), "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+
+  --color-pine: #041e1a;
+  --color-pine-70: rgba(4, 30, 26, 0.7);
+  --color-pine-45: rgba(4, 30, 26, 0.45);
+  --color-pine-22: rgba(4, 30, 26, 0.22);
+  --color-pine-12: rgba(4, 30, 26, 0.12);
+
+  --color-ivory: #f4eee7;
+  --color-ivory-92: rgba(244, 238, 231, 0.92);
+  --color-ivory-70: rgba(244, 238, 231, 0.7);
+  --color-ivory-45: rgba(244, 238, 231, 0.45);
+  --color-ivory-18: rgba(244, 238, 231, 0.18);
+  --color-ivory-10: rgba(244, 238, 231, 0.1);
+
+  --color-black: #040404;
+
+  /* Status colours used sparingly for inventory/enquiry states only. */
+  --color-rust: #7a3b1f;
+  --color-rust-12: rgba(122, 59, 31, 0.12);
+
+  /*
+   * 61.25rem === 980px. Must be declared in rem, not px: Tailwind sorts the
+   * breakpoint scale by value, and a px entry can't be compared against the
+   * rem-based defaults — it gets emitted before sm/md/lg instead of between
+   * md and lg. Equal specificity then hands every conflict to the later rule,
+   * so `sm:` silently beat `tablet:` at every viewport >= 980px.
+   */
+  --breakpoint-tablet: 61.25rem;
+
+  --container-page: 1360px;
+
+  --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * The page gutter, in one place. Container pads by it, full-bleed panels derive
+ * their spine offset from it, and the carousel indents its first card by it —
+ * so every text block on the page starts on the same vertical line regardless
+ * of whether its section is contained or bleeds to the viewport edge.
+ */
+:root {
+  --page-gutter: 1.25rem; /* 20px */
+}
+@media (min-width: 40rem) {
+  :root {
+    --page-gutter: 2rem; /* 32px */
+  }
+}
+@media (min-width: 61.25rem) {
+  :root {
+    --page-gutter: 2.5rem; /* 40px */
+  }
+}
+
+/*
+ * Left edge of contained content, usable inside a full-bleed element.
+ * Deliberately `100%` and not `100vw`: the percentage resolves against the
+ * containing block's inline size, which excludes the classic scrollbar that
+ * 100vw would wrongly include — so this lands on exactly the same pixel as
+ * Container's content edge.
+ */
+@utility page-spine-pl {
+  padding-inline-start: max(
+    var(--page-gutter),
+    calc((100% - var(--container-page)) / 2 + var(--page-gutter))
+  );
+  /*
+   * Snap targets must land on the spine, not on the scrollport edge. Without a
+   * matching scroll-padding, `snap-start` aligns each card flush to x=0 and
+   * silently cancels the indent above.
+   */
+  scroll-padding-inline-start: max(
+    var(--page-gutter),
+    calc((100% - var(--container-page)) / 2 + var(--page-gutter))
+  );
+}
+
+/*
+ * Scoped to anchor navigation rather than set on `html`. As a global it hijacked
+ * every programmatic scroll on the page — any scrollTo/scrollIntoView anywhere
+ * in the app silently became an animation it didn't ask for.
+ */
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :has(:target) {
+    scroll-behavior: auto;
+  }
+  /*
+   * Reduced motion means removing vestibular movement, not all feedback — so
+   * transforms and animations are dropped while opacity and colour transitions
+   * are kept, since those still carry state changes (hover, press, disabled).
+   */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-property: opacity, color, background-color, border-color, box-shadow !important;
+    transition-duration: 150ms !important;
+  }
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-pine);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-pine);
+  outline-offset: 2px;
+}
