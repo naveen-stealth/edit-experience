@@ -1,8 +1,8 @@
 import {
   BuildingStorefrontIcon,
-  ChatBubbleLeftRightIcon,
   DocumentTextIcon,
   ShieldCheckIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import { TRUST_POINTS, type TrustPointIcon } from "@/lib/content/site";
 
@@ -10,7 +10,7 @@ const ICONS: Record<TrustPointIcon, typeof ShieldCheckIcon> = {
   authenticated: ShieldCheckIcon,
   invoice: DocumentTextIcon,
   store: BuildingStorefrontIcon,
-  concierge: ChatBubbleLeftRightIcon,
+  concierge: UserIcon,
 };
 
 export function TrustStrip() {

@@ -39,6 +39,7 @@ export function FilterPanel({
         )}
       </div>
 
+      <FilterGroup heading="Category" facetKey="subcategory" options={facets.subcategory} />
       {showDesigner && <FilterGroup heading="Designer" facetKey="designer" options={facets.designer} />}
       <FilterGroup heading="Condition" facetKey="condition" options={facets.condition} />
       <FilterGroup heading="Colour" facetKey="colour" options={facets.colour} />

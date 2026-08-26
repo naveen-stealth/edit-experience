@@ -143,6 +143,8 @@ export interface ProductFilters {
   designerHandle?: string;
   /** Multi-select designer facet on a listing page. */
   designerHandles?: string[];
+  /** Slugified subcategory values, e.g. ["shoulder-bags"]. */
+  subcategory?: string[];
   collectionHandle?: string;
   gender?: ProductGender;
   condition?: ProductCondition[];

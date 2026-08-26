@@ -23,7 +23,13 @@ function jumpTo(el: HTMLElement, left: number) {
 }
 
 /**
- * A product rail that optionally loops.
+ * A product rail. Finite by default; `loop` opts into wrapping.
+ *
+ * Finite is the default deliberately. Stock here is one-of-one, so a rail has a
+ * real end and reaching it is information — an endless rail hides how much there
+ * is and quietly repeats pieces the shopper has already rejected. The arrows
+ * disable at each end rather than going dead, so the boundary reads as "nothing
+ * further" instead of "broken".
  *
  * With `loop`, the list is rendered three times and `scrollLeft` is silently cut
  * back into the middle copy whenever an edge copy comes into view. The copies are
@@ -40,7 +46,7 @@ function jumpTo(el: HTMLElement, left: number) {
 export function ProductCarousel({
   products,
   onDark = false,
-  loop = true,
+  loop = false,
 }: {
   products: Product[];
   onDark?: boolean;
@@ -50,6 +56,8 @@ export function ProductCarousel({
   /** One copy's scroll distance. 0 means "not looping". */
   const copyAdvanceRef = useRef(0);
   const [looping, setLooping] = useState(false);
+  /** Only meaningful when finite — a looping rail never reaches an edge. */
+  const [edges, setEdges] = useState({ atStart: true, atEnd: false, scrollable: true });
 
   const items = looping ? Array.from({ length: COPIES }, () => products).flat() : products;
 
@@ -157,6 +165,37 @@ export function ProductCarousel({
     };
   }, [looping, products, recentre]);
 
+  /*
+   * Edge state for the arrows on a finite rail.
+   *
+   * Deliberately not called synchronously here: `ResizeObserver` fires once on
+   * observe, which initialises the state off the effect body. Setting state
+   * inline instead would cascade an extra render on every mount for no gain.
+   */
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el || looping) return;
+
+    const update = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      // 2px tolerance: fractional card widths mean scrollLeft rarely lands on
+      // max exactly, and a 1px shortfall must not read as "more to come".
+      setEdges({
+        atStart: el.scrollLeft <= 2,
+        atEnd: el.scrollLeft >= max - 2,
+        scrollable: max > 2,
+      });
+    };
+
+    el.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [looping, products]);
+
   /**
    * Steps one card, addressed absolutely by the target card's own position.
    *
@@ -228,8 +267,13 @@ export function ProductCarousel({
         })}
       </div>
 
-      <RailButton direction={-1} onClick={step} />
-      <RailButton direction={1} onClick={step} />
+      {/* A looping rail has no ends, so nothing to disable. */}
+      {(looping || edges.scrollable) && (
+        <>
+          <RailButton direction={-1} onClick={step} disabled={!looping && edges.atStart} />
+          <RailButton direction={1} onClick={step} disabled={!looping && edges.atEnd} />
+        </>
+      )}
     </div>
   );
 }
@@ -240,14 +284,23 @@ export function ProductCarousel({
  * midpoint at every breakpoint — the old `top-[38%]` was a hand-tuned guess that
  * drifted whenever a product title wrapped to a second line.
  */
-function RailButton({ direction, onClick }: { direction: 1 | -1; onClick: (d: 1 | -1) => void }) {
+function RailButton({
+  direction,
+  onClick,
+  disabled,
+}: {
+  direction: 1 | -1;
+  onClick: (d: 1 | -1) => void;
+  disabled: boolean;
+}) {
   const Icon = direction === -1 ? ArrowLeftIcon : ArrowRightIcon;
   return (
     <button
       type="button"
       onClick={() => onClick(direction)}
+      disabled={disabled}
       aria-label={direction === -1 ? "Previous products" : "Next products"}
-      className={`absolute top-[calc((100%-5rem)/2)] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-ivory text-pine shadow-[0_2px_10px_rgba(4,30,26,0.18)] transition duration-150 ease-luxury hover:shadow-[0_4px_16px_rgba(4,30,26,0.24)] active:scale-95 motion-reduce:active:scale-100 ${
+      className={`absolute top-[calc((100%-5rem)/2)] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-ivory text-pine shadow-[0_2px_10px_rgba(4,30,26,0.18)] transition duration-150 ease-luxury hover:shadow-[0_4px_16px_rgba(4,30,26,0.24)] active:scale-95 disabled:pointer-events-none disabled:opacity-0 motion-reduce:active:scale-100 ${
         direction === -1 ? "left-4" : "right-4"
       }`}
     >

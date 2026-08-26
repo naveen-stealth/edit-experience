@@ -86,6 +86,30 @@
 }
 
 /*
+ * Thin, palette-matched scrollbar for tall inner panels (the filter rail). The
+ * default two-tone OS track reads as a foreign element inside Ivory surfaces.
+ */
+@utility scrollbar-luxe {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-pine-22) transparent;
+}
+
+/*
+ * Entry fade for conditionally-mounted overlays (menu, search). They mount
+ * straight into the DOM, so a transition alone never runs — @starting-style
+ * supplies the "from" state. Browsers without it show the overlay immediately,
+ * which is the correct fallback. Opacity-only, so it survives reduced motion.
+ */
+.overlay-enter {
+  opacity: 1;
+  transition: opacity 200ms var(--ease-luxury);
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/*
  * Scoped to anchor navigation rather than set on `html`. As a global it hijacked
  * every programmatic scroll on the page — any scrollTo/scrollIntoView anywhere
  * in the app silently became an animation it didn't ask for.
@@ -118,6 +142,12 @@ body {
   color: var(--color-pine);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /*
+   * Android Chrome flashes a grey highlight rectangle over anything tapped —
+   * a box the design never drew. Press feedback here is deliberate (:active
+   * states on every control), so the OS one is suppressed.
+   */
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1,
@@ -131,4 +161,14 @@ h3,
 :focus-visible {
   outline: 1px solid var(--color-pine);
   outline-offset: 2px;
+}
+
+/*
+ * Opt-out for controls that carry their own focus affordance. This must live
+ * here, unlayered: the ring above is unlayered too, and unlayered rules beat
+ * anything inside Tailwind's @layer — so a `focus:outline-none` utility can
+ * never override it, however specific it looks.
+ */
+.focus-ring-none:focus-visible {
+  outline: none;
 }

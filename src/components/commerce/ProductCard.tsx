@@ -30,7 +30,7 @@ export function ProductCard({
       {/* Scale the photo inside a fixed frame rather than lifting its brightness:
           on pre-owned resale the photo is evidence of condition, so hover must
           not alter the colour the buyer is judging. */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden ring-1 ring-pine/5 ring-inset">
         <ProductMedia
           product={product}
           className={`${
@@ -61,7 +61,7 @@ export function ProductCard({
         <h3 className={`text-[15px] leading-snug ${onDark ? "text-ivory" : "text-pine"}`}>
           {product.title}
         </h3>
-        <ProductPrice product={product} onDark={onDark} className="mt-1.5 block" />
+        <ProductPrice product={product} onDark={onDark} muted className="mt-1 block" />
       </div>
     </Link>
   );

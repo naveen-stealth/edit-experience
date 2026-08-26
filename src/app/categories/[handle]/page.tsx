@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ListingHero } from "@/components/plp/ListingHero";
 import { ProductListing } from "@/components/plp/ProductListing";
 import { computeFacets } from "@/lib/commerce/facets";
-import { CATEGORIES, getCategoryByHandle } from "@/lib/commerce/collections";
+import { getCategoryByHandle } from "@/lib/commerce/collections";
 import {
   clearFiltersQueryString,
   countActiveFilters,
@@ -14,15 +14,20 @@ import {
 } from "@/lib/commerce/plp-query";
 import { filterProducts, getProductsByCategory } from "@/lib/commerce/products";
 import type { ProductGender } from "@/lib/commerce/types";
+import { SHOPPABLE_CATEGORIES } from "@/lib/content/site";
 
 export function generateStaticParams() {
-  return CATEGORIES.map((category) => ({ handle: category.handle }));
+  return SHOPPABLE_CATEGORIES.map((handle) => ({ handle }));
+}
+
+function isShoppable(handle: string): boolean {
+  return (SHOPPABLE_CATEGORIES as readonly string[]).includes(handle);
 }
 
 export async function generateMetadata(props: PageProps<"/categories/[handle]">): Promise<Metadata> {
   const { handle } = await props.params;
   const category = getCategoryByHandle(handle);
-  if (!category) return {};
+  if (!category || !isShoppable(handle)) return {};
 
   return {
     title: category.name,
@@ -35,7 +40,7 @@ export default async function CategoryPage(props: PageProps<"/categories/[handle
   const searchParams = (await props.searchParams) as RawSearchParams;
 
   const category = getCategoryByHandle(handle);
-  if (!category) notFound();
+  if (!category || !isShoppable(handle)) notFound();
 
   /*
    * `gender` comes from the URL because the nav links into categories with it
@@ -69,8 +74,8 @@ export default async function CategoryPage(props: PageProps<"/categories/[handle
           { label: category.name },
         ]}
       />
+      {/* No eyebrow — the title and description carry it. */}
       <ListingHero
-        eyebrow={genderLabel ? `${genderLabel} · Category` : "Category"}
         title={category.name}
         description={`Every piece is inspected in-house before it's listed, priced to condition and rarity, and available to view online or in our store.`}
         image={category.image}

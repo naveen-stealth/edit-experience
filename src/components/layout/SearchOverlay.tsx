@@ -6,6 +6,8 @@ import { searchProducts } from "@/lib/commerce/products";
 import { CATEGORIES } from "@/lib/commerce/collections";
 import { ProductPrice } from "@/components/commerce/ProductPrice";
 import { trackEvent } from "@/lib/analytics";
+import { OverlayPortal } from "@/components/ui/OverlayPortal";
+import { Container } from "@/components/ui/Container";
 import { useOverlay } from "@/lib/utils/use-overlay";
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -26,28 +28,31 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
   if (!open) return null;
 
   return (
-    <div ref={overlayRef} className="fixed inset-0 z-50 flex flex-col bg-ivory" role="dialog" aria-modal aria-label="Search">
-      <div className="border-b border-pine-12 px-5 py-5 tablet:px-10">
-        <div className="mx-auto flex max-w-(--container-page) items-center gap-4">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="shrink-0 text-pine-45">
+    <OverlayPortal>
+      <div ref={overlayRef} className="overlay-enter fixed inset-0 z-50 flex flex-col bg-ivory" role="dialog" aria-modal aria-label="Search">
+      <div className="border-b border-pine-12 py-6 tablet:py-7">
+        <Container className="flex items-center gap-4">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden className="shrink-0 text-pine-45">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" />
           </svg>
           <input
             autoFocus
             type="search"
+            autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search brand, product or category"
-            className="flex-1 bg-transparent font-serif text-2xl text-pine placeholder:text-pine-22 focus:outline-none"
+            className="focus-ring-none min-w-0 flex-1 bg-transparent font-serif text-2xl text-pine placeholder:text-pine-45 focus:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
           />
           <button type="button" onClick={handleClose} aria-label="Close search" className="-m-2 p-2 text-[11px] uppercase tracking-[0.14em] text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine">
             Close
           </button>
-        </div>
+        </Container>
       </div>
 
-      <div className="mx-auto w-full max-w-(--container-page) flex-1 overflow-y-auto px-5 py-10 tablet:px-10">
+      <div className="min-h-0 flex-1 overflow-y-auto py-10">
+        <Container>
         {query.trim().length === 0 ? (
           <div>
             <p className="mb-4 text-[11px] uppercase tracking-[0.14em] text-pine-45">Shop by category</p>
@@ -69,10 +74,14 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             Nothing matched &ldquo;{query}&rdquo;. Our concierge can help source it — see the Concierge page.
           </p>
         ) : (
-          <ul className="space-y-6">
+          <ul className="divide-y divide-pine-12">
             {results.map((product) => (
               <li key={product.id}>
-                <Link href={`/products/${product.handle}`} onClick={handleClose} className="flex items-center justify-between gap-6 border-b border-pine-12 pb-4">
+                <Link
+                  href={`/products/${product.handle}`}
+                  onClick={handleClose}
+                  className="flex items-center justify-between gap-6 py-4 transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60"
+                >
                   <span>
                     <span className="block text-[11px] uppercase tracking-[0.1em] text-pine-45">{product.brand}</span>
                     <span className="block text-[15px] text-pine">{product.title}</span>
@@ -83,7 +92,9 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             ))}
           </ul>
         )}
+        </Container>
       </div>
-    </div>
+      </div>
+    </OverlayPortal>
   );
 }

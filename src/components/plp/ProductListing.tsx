@@ -36,7 +36,7 @@ export function ProductListing({
       <div className="tablet:grid tablet:grid-cols-[240px_1fr] tablet:gap-12">
         {/* Desktop rail. Sticky so the facets stay reachable down a long grid. */}
         <aside className="hidden tablet:block">
-          <div className="sticky top-[140px] max-h-[calc(100vh-160px)] overflow-y-auto pr-1 pb-4">
+          <div className="scrollbar-luxe sticky top-[149px] max-h-[calc(100vh-149px-1.5rem)] overflow-y-auto pr-5 pb-6">
             <FilterPanel facets={facets} activeCount={activeCount} showDesigner={showDesignerFacet} />
           </div>
         </aside>

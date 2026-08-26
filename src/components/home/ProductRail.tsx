@@ -13,6 +13,7 @@ export function ProductRail({
   viewAllHref,
   layout = "grid",
   onDark = false,
+  loop = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -21,6 +22,8 @@ export function ProductRail({
   viewAllHref: string;
   layout?: "grid" | "carousel";
   onDark?: boolean;
+  /** Carousel only: wrap around instead of stopping at the last piece. */
+  loop?: boolean;
 }) {
   const header = (
     <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -56,7 +59,7 @@ export function ProductRail({
     return (
       <div>
         <Container>{header}</Container>
-        <ProductCarousel products={products} onDark={onDark} />
+        <ProductCarousel products={products} onDark={onDark} loop={loop} />
       </div>
     );
   }

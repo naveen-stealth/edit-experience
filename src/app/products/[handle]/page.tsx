@@ -77,10 +77,12 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
 
           {/* Sticky on desktop so the buy action stays in reach past a tall gallery. */}
           <div className="mt-8 tablet:mt-0">
-            <div className="tablet:sticky tablet:top-[150px]">
+            <div className="tablet:sticky tablet:top-[149px]">
               <Eyebrow as="p" className="mb-2.5 block">
+                {/* Designer pages left the sitemap — the designer facet on the
+                    category listing is where this brand's pieces live now. */}
                 <a
-                  href={`/designers/${product.designerHandle}`}
+                  href={`/categories/${product.category}?designer=${product.designerHandle}`}
                   className="transition-opacity duration-150 ease-luxury hover:opacity-70"
                 >
                   {product.brand}

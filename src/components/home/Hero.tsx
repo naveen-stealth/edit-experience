@@ -1,8 +1,8 @@
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LinkButton } from "@/components/ui/LinkButton";
-import { STORE_INFO } from "@/lib/content/site";
 
 export function Hero() {
   return (
@@ -19,21 +19,17 @@ export function Hero() {
       <Container className="relative z-10 py-14 tablet:py-16">
         <div className="max-w-lg">
           <Eyebrow onDark className="mb-3.5 block">
-            The New Arrival
+            This Week&rsquo;s Selection
           </Eyebrow>
           <h1 className="text-[38px] leading-[1.08] text-ivory tablet:text-[58px]">
-            A considered selection of exceptional pieces.
+            Pieces Worth
+            <br />
+            the Wait
           </h1>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed font-light text-ivory-70">
-            Authenticated pre-owned luxury, sourced and inspected in-house. Every piece is available to view
-            online or in our {STORE_INFO.city} store.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-4">
-            <LinkButton href="/new-in" variant="on-dark">
-              Shop New Arrivals
-            </LinkButton>
-            <LinkButton href="/journal" variant="on-dark" className="border-ivory-45">
-              Discover The Edit
+          <div className="mt-9">
+            <LinkButton href="/new-arrivals" variant="on-dark">
+              Explore the Collection
+              <ArrowRightIcon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} aria-hidden />
             </LinkButton>
           </div>
         </div>

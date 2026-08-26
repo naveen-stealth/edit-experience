@@ -18,7 +18,7 @@ export const SORT_OPTIONS: { value: ProductSort; label: string }[] = [
 const SORT_VALUES = new Set<string>(SORT_OPTIONS.map((o) => o.value));
 
 /** Multi-select facets travel as comma-joined lists — `?colour=black,tan`. */
-export const LIST_KEYS = ["designer", "colour", "condition", "availability"] as const;
+export const LIST_KEYS = ["subcategory", "designer", "colour", "condition", "availability"] as const;
 export type ListKey = (typeof LIST_KEYS)[number];
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -56,6 +56,7 @@ export function parseFilters(params: RawSearchParams, scope: ProductFilters = {}
   const availability = readList(params, "availability") as ProductAvailability[];
   const designer = readList(params, "designer");
   const colour = readList(params, "colour");
+  const subcategory = readList(params, "subcategory");
 
   return {
     ...scope,
@@ -66,6 +67,7 @@ export function parseFilters(params: RawSearchParams, scope: ProductFilters = {}
      * the first — or, worse, silently drop all of them.
      */
     designerHandles: scope.designerHandle || designer.length === 0 ? undefined : designer,
+    subcategory: subcategory.length ? subcategory : undefined,
     condition: condition.length ? condition : undefined,
     availability: availability.length ? availability : undefined,
     colour: colour.length ? colour : undefined,

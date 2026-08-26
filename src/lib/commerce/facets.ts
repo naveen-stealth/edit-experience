@@ -1,5 +1,6 @@
 import { CONDITION_LABEL, type Product, type ProductFilters } from "./types";
 import { DESIGNERS } from "./collections";
+import { slugify } from "@/lib/utils/slug";
 
 export interface FacetOption {
   value: string;
@@ -8,6 +9,7 @@ export interface FacetOption {
 }
 
 export interface Facets {
+  subcategory: FacetOption[];
   designer: FacetOption[];
   colour: FacetOption[];
   condition: FacetOption[];
@@ -15,7 +17,7 @@ export interface Facets {
   priceBounds: { min: number; max: number } | null;
 }
 
-type FacetKey = "designer" | "colour" | "condition" | "availability";
+type FacetKey = "subcategory" | "designer" | "colour" | "condition" | "availability";
 
 const AVAILABILITY_LABEL: Record<string, string> = {
   in_stock: "Available",
@@ -104,6 +106,14 @@ export function computeFacets(scope: Product[], filters: ProductFilters): Facets
   const prices = scope.map((p) => p.price.amount);
 
   return {
+    // Slug as the value so it matches the URL; display string as the label.
+    subcategory: tally(
+      scope,
+      filters,
+      "subcategory",
+      (p) => (p.subcategory ? slugify(p.subcategory) : undefined),
+      (v) => v.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ")
+    ),
     designer: tally(scope, filters, "designer", (p) => p.designerHandle, (v) => DESIGNER_NAME.get(v) ?? v),
     colour: tally(scope, filters, "colour", (p) => p.colour, (v) => v),
     condition: tally(

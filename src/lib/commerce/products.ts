@@ -1,3 +1,4 @@
+import { slugify } from "@/lib/utils/slug";
 import { DEFAULT_CURRENCY, DEFAULT_RETURN_POLICY, DEFAULT_SHIPPING_ESTIMATE, resolvePurchaseMode } from "./config";
 import type {
   Authentication,
@@ -1015,6 +1016,9 @@ export function filterProducts(filters: ProductFilters, sort: ProductSort = "new
   if (filters.designerHandle) results = results.filter((p) => p.designerHandle === filters.designerHandle);
   if (filters.designerHandles?.length) {
     results = results.filter((p) => filters.designerHandles!.includes(p.designerHandle));
+  }
+  if (filters.subcategory?.length) {
+    results = results.filter((p) => p.subcategory && filters.subcategory!.includes(slugify(p.subcategory)));
   }
   if (filters.collectionHandle) {
     results = results.filter((p) => p.collectionIds.includes(filters.collectionHandle!));
