@@ -25,9 +25,9 @@ export function ListingHero({
             {eyebrow}
           </Eyebrow>
         )}
-        <h1 className="font-serif text-[32px] leading-tight text-pine tablet:text-[44px]">{title}</h1>
+        <h1 className="font-serif text-title text-pine tablet:text-display-sm">{title}</h1>
         {description && (
-          <p className="mx-auto mt-4 max-w-[52ch] text-[14.5px] leading-relaxed font-light text-pine-70">
+          <p className="mx-auto mt-4 max-w-[52ch] text-body font-light text-pine-70">
             {description}
           </p>
         )}
@@ -53,9 +53,9 @@ export function ListingHero({
             {eyebrow}
           </Eyebrow>
         )}
-        <h1 className="font-serif text-[32px] leading-tight text-pine tablet:text-[44px]">{title}</h1>
+        <h1 className="font-serif text-title text-pine tablet:text-display-sm">{title}</h1>
         {description && (
-          <p className="mx-auto mt-4 max-w-[46ch] text-[14.5px] leading-relaxed font-light text-pine-70">
+          <p className="mx-auto mt-4 max-w-[46ch] text-body font-light text-pine-70">
             {description}
           </p>
         )}

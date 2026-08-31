@@ -54,7 +54,7 @@ export function ActiveFilterChips({ facets }: { facets: Facets }) {
           key={chip.label}
           href={chip.href}
           scroll={false}
-          className="group/chip flex items-center gap-2 border border-pine-22 py-1.5 pr-2.5 pl-3 text-[12px] text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
+          className="group/chip flex items-center gap-2 border border-pine-22 py-1.5 pr-2.5 pl-3 text-caption text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
         >
           {chip.label}
           <span aria-hidden className="text-pine-45 transition-colors duration-150 group-hover/chip:text-pine">
@@ -69,7 +69,7 @@ export function ActiveFilterChips({ facets }: { facets: Facets }) {
         <Link
           href={clearHref}
           scroll={false}
-          className="px-2 text-[11px] font-medium uppercase tracking-[0.14em] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+          className="px-2 text-micro font-medium uppercase tracking-caps text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
         >
           Clear all
         </Link>

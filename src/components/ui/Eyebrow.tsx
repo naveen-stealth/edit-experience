@@ -11,7 +11,7 @@ export function Eyebrow({
 }) {
   return (
     <Tag
-      className={`text-[11px] font-medium uppercase tracking-[0.22em] ${
+      className={`text-micro font-medium uppercase tracking-eyebrow ${
         onDark ? "text-ivory-70" : "text-pine-45"
       } ${className}`}
     >

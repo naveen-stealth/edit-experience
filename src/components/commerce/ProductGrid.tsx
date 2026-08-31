@@ -5,7 +5,7 @@ export function ProductGrid({ products, className = "" }: { products: Product[];
   if (products.length === 0) return null;
 
   return (
-    <div className={`grid grid-cols-2 gap-x-6 gap-y-10 tablet:grid-cols-3 lg:grid-cols-4 ${className}`}>
+    <div className={`grid grid-cols-2 gap-x-(--grid-gutter) gap-y-10 tablet:grid-cols-3 lg:grid-cols-4 ${className}`}>
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

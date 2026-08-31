@@ -49,8 +49,8 @@ export function ImageTextSection({
             {eyebrow}
           </Eyebrow>
         )}
-        <h2 className="text-[30px] leading-[1.15] text-pine tablet:text-[38px]">{title}</h2>
-        <div className="mt-5 space-y-3.5 text-[15px] leading-relaxed font-light text-pine-70">
+        <h2 className="text-title text-pine tablet:text-display-sm">{title}</h2>
+        <div className="mt-5 space-y-3.5 text-body font-light text-pine-70">
           {children}
         </div>
         {footer && <div className="mt-6 border-t border-pine-12 pt-5">{footer}</div>}

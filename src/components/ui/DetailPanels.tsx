@@ -40,7 +40,7 @@ export function DetailPanels({ panels }: { panels: DetailPanel[] }) {
                 aria-selected={selected}
                 aria-controls={`${base}-panel-${panel.id}`}
                 onClick={() => setOpenId(panel.id)}
-                className={`-mb-px border-b px-4 py-3 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-150 ease-luxury ${
+                className={`-mb-px border-b px-4 py-3 text-micro font-medium uppercase tracking-caps transition-colors duration-150 ease-luxury ${
                   selected
                     ? "border-pine text-pine"
                     : "border-transparent text-pine-45 hover:text-pine active:text-pine"
@@ -58,7 +58,7 @@ export function DetailPanels({ panels }: { panels: DetailPanel[] }) {
             id={`${base}-panel-${panel.id}`}
             aria-labelledby={`${base}-tab-${panel.id}`}
             hidden={panel.id !== openId}
-            className="pt-5 text-[14px] leading-relaxed font-light text-pine-70"
+            className="pt-5 text-body font-light text-pine-70"
           >
             {panel.content}
           </div>
@@ -76,7 +76,7 @@ export function DetailPanels({ panels }: { panels: DetailPanel[] }) {
                 aria-expanded={open}
                 aria-controls={`${base}-acc-${panel.id}`}
                 onClick={() => setOpenId(open ? undefined : panel.id)}
-                className="flex w-full items-center justify-between gap-4 py-4 text-left text-[11px] font-medium uppercase tracking-[0.14em] text-pine transition-opacity duration-150 ease-luxury active:opacity-60"
+                className="flex w-full items-center justify-between gap-4 py-4 text-left text-micro font-medium uppercase tracking-caps text-pine transition-opacity duration-150 ease-luxury active:opacity-60"
               >
                 {panel.label}
                 <span aria-hidden className="relative h-3 w-3 shrink-0">
@@ -91,7 +91,7 @@ export function DetailPanels({ panels }: { panels: DetailPanel[] }) {
               <div
                 id={`${base}-acc-${panel.id}`}
                 hidden={!open}
-                className="pb-5 text-[14px] leading-relaxed font-light text-pine-70"
+                className="pb-5 text-body font-light text-pine-70"
               >
                 {panel.content}
               </div>

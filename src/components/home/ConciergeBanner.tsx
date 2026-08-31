@@ -13,16 +13,16 @@ export function ConciergeBanner() {
           <Eyebrow onDark className="mb-3 block">
             Concierge
           </Eyebrow>
-          <h2 className="text-[30px] leading-tight tablet:text-[36px]">
+          <h2 className="text-title tablet:text-display-sm">
             Looking for something specific?
             <br />
             Our concierge can help source it.
           </h2>
-          <p className="mt-4 max-w-md text-[14.5px] leading-relaxed font-light text-ivory-70">
+          <p className="mt-4 max-w-md text-body font-light text-ivory-70">
             Recommendations, private sourcing, rare pieces, gifting and after-sales support — handled by a
             person, not a form.
           </p>
-          <p className="mt-4 text-[12px] tracking-[0.02em] text-ivory-45">
+          <p className="mt-4 text-caption text-ivory-45">
             Concierge available {STORE_INFO.hours[0].hours}, {STORE_INFO.hours[0].days.toLowerCase()}.
           </p>
           <div className="mt-7 flex flex-wrap gap-4">

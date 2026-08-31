@@ -34,7 +34,7 @@ export function FilterDrawer({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex w-full items-center justify-center gap-2 border border-pine-22 px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
+        className="flex w-full items-center justify-center gap-2 border border-pine-22 px-4 py-2.5 text-micro font-medium uppercase tracking-caps text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
       >
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden>
           <path d="M2 4.5h12M4.5 8h7M6.5 11.5h3" />
@@ -48,12 +48,12 @@ export function FilterDrawer({
           <button aria-label="Close filters" onClick={close} className="absolute inset-0 bg-pine/30" />
           <div className="relative flex h-full w-full max-w-sm flex-col bg-ivory">
             <div className="flex items-center justify-between border-b border-pine-12 px-5 py-5">
-              <h2 className="font-serif text-2xl text-pine">Filter</h2>
+              <h2 className="font-serif text-title-sm text-pine">Filter</h2>
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close filters"
-                className="-m-2 p-2 text-[11px] uppercase tracking-[0.14em] text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine"
+                className="-m-2 p-2 text-micro uppercase tracking-caps text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine"
               >
                 Close
               </button>
@@ -67,7 +67,7 @@ export function FilterDrawer({
               <button
                 type="button"
                 onClick={close}
-                className="w-full border border-pine bg-pine px-7 py-[15px] text-[11.5px] font-medium uppercase tracking-[0.14em] text-ivory transition duration-150 ease-luxury active:scale-[0.98] motion-reduce:active:scale-100"
+                className="w-full border border-pine bg-pine px-7 py-[15px] text-micro font-medium uppercase tracking-caps text-ivory transition duration-150 ease-luxury active:scale-[0.98] motion-reduce:active:scale-100"
               >
                 Show {resultCount} {resultCount === 1 ? "piece" : "pieces"}
               </button>

@@ -40,6 +40,67 @@
   --container-page: 1360px;
 
   --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /*
+   * THE TYPE LADDER — the only font sizes on the site. See DESIGN.md.
+   *
+   * Nine steps, each carrying its own line-height and tracking, following the
+   * Obys typography principles: few sizes with big steps between them (small
+   * differences read as accidents, not hierarchy); display type at 90–110%
+   * line-height with negative tracking; text sizes at 140–160% with none.
+   * The serif rungs are Scheherazade New (regular only), the sans rungs Inter.
+   *
+   * Never write text-[NNpx]. If a design seems to need a new size, it takes a
+   * rung instead — that pressure is the system working.
+   */
+
+  /* Serif — display & titles */
+  --text-display: 3.5rem; /* 56 — page hero */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.01em;
+  --text-display-sm: 2.375rem; /* 38 — hero mobile, section/listing headings desktop */
+  --text-display-sm--line-height: 1.06;
+  --text-display-sm--letter-spacing: -0.01em;
+  --text-title: 1.875rem; /* 30 — section headings mobile, product title */
+  --text-title--line-height: 1.12;
+  --text-title--letter-spacing: -0.005em;
+  --text-title-sm: 1.375rem; /* 22 — pull quotes, drawer/overlay titles, designer strip */
+  --text-title-sm--line-height: 1.3;
+
+  /* Sans — text */
+  --text-body-lg: 1.0625rem; /* 17 — PDP price, emphasized figures */
+  --text-body-lg--line-height: 1.45;
+  --text-body: 0.9375rem; /* 15 — editorial paragraphs, card titles, inputs */
+  --text-body--line-height: 1.6;
+  --text-body-sm: 0.8125rem; /* 13 — UI text, prices on cards, filter options */
+  --text-body-sm--line-height: 1.5;
+  --text-caption: 0.75rem; /* 12 — supporting notes, timestamps */
+  --text-caption--line-height: 1.45;
+  --text-micro: 0.6875rem; /* 11 — uppercase labels, always tracked */
+  --text-micro--line-height: 1.4;
+
+  /*
+   * Tracking, three sanctioned values. Uppercase micro-type must be tracked
+   * (caps read as a block without it); mixed-case text is never tracked — the
+   * ladder's own letter-spacing handles display sizes.
+   */
+  --tracking-caps: 0.14em; /* standard uppercase labels, buttons, nav */
+  --tracking-caps-tight: 0.1em; /* dense caps rows: utility bar, header row */
+  --tracking-eyebrow: 0.22em; /* eyebrows only — the widest voice on the page */
+}
+
+/*
+ * THE GRID GUTTER — one gap for every product/content grid, matching the Obys
+ * columns model (margins first, then one gutter). 16px on mobile, 24px from
+ * tablet. Use gap-(--grid-gutter); never invent per-grid gaps.
+ */
+:root {
+  --grid-gutter: 1rem;
+}
+@media (min-width: 61.25rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
 }
 
 /*

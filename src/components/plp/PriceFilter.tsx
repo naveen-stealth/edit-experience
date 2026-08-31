@@ -25,7 +25,7 @@ export function PriceFilter({ bounds }: { bounds: { min: number; max: number } |
   const currentMax = typeof raw.priceMax === "string" ? raw.priceMax : "";
 
   const inputClass =
-    "w-full border border-pine-22 bg-transparent px-3 py-2 text-[13px] text-pine transition-colors duration-150 ease-luxury placeholder:text-pine-45 hover:border-pine-45 focus:border-pine focus:outline-none";
+    "w-full border border-pine-22 bg-transparent px-3 py-2 text-body-sm text-pine transition-colors duration-150 ease-luxury placeholder:text-pine-45 hover:border-pine-45 focus:border-pine focus:outline-none";
 
   return (
     <form
@@ -39,7 +39,7 @@ export function PriceFilter({ bounds }: { bounds: { min: number; max: number } |
         router.push(setHref({ priceMin: min || null, priceMax: max || null }), { scroll: false });
       }}
     >
-      <h3 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-pine">Price</h3>
+      <h3 className="mb-3 text-micro font-medium uppercase tracking-caps text-pine">Price</h3>
       <div className="flex items-center gap-2">
         <label className="flex-1">
           <span className="sr-only">Minimum price in rupees</span>
@@ -71,7 +71,7 @@ export function PriceFilter({ bounds }: { bounds: { min: number; max: number } |
       </div>
       <button
         type="submit"
-        className="mt-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+        className="mt-2.5 text-micro font-medium uppercase tracking-caps text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
       >
         Apply price
       </button>

@@ -26,7 +26,7 @@ export function TrustStrip() {
             }`}
           >
             <Icon aria-hidden className="h-5 w-5 text-ivory-70" strokeWidth={1.5} />
-            <span className="text-[11.5px] leading-snug">{point.title}</span>
+            <span className="text-micro leading-snug">{point.title}</span>
           </div>
         );
       })}

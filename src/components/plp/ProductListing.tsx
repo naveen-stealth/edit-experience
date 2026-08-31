@@ -43,7 +43,7 @@ export function ProductListing({
 
         <div>
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-[12.5px] text-pine-45" aria-live="polite">
+            <p className="text-caption text-pine-45" aria-live="polite">
               {count === 0 ? "No pieces" : `${count} ${count === 1 ? "piece" : "pieces"}`}
             </p>
             {/* Full width on mobile so Filter and Sort split the row evenly;
@@ -65,8 +65,8 @@ export function ProductListing({
 
           {count === 0 ? (
             <div className="border border-pine-12 px-6 py-16 text-center">
-              <p className="font-serif text-[22px] text-pine">Nothing matches these filters.</p>
-              <p className="mx-auto mt-2.5 max-w-[42ch] text-[14px] leading-relaxed font-light text-pine-70">
+              <p className="font-serif text-title-sm text-pine">Nothing matches these filters.</p>
+              <p className="mx-auto mt-2.5 max-w-[42ch] text-body font-light text-pine-70">
                 Our stock is one-of-one, so combinations sell out. Clear a filter, or let the concierge source the
                 piece you had in mind.
               </p>
@@ -75,14 +75,14 @@ export function ProductListing({
                   <Link
                     href={clearHref}
                     scroll={false}
-                    className="inline-flex items-center border border-pine px-7 py-[15px] text-[11.5px] font-medium uppercase tracking-[0.14em] text-pine transition duration-150 ease-luxury hover:bg-pine hover:text-ivory active:scale-[0.98] motion-reduce:active:scale-100"
+                    className="inline-flex items-center border border-pine px-7 py-[15px] text-micro font-medium uppercase tracking-caps text-pine transition duration-150 ease-luxury hover:bg-pine hover:text-ivory active:scale-[0.98] motion-reduce:active:scale-100"
                   >
                     Clear filters
                   </Link>
                 )}
                 <Link
                   href="/concierge"
-                  className="text-[11.5px] font-medium uppercase tracking-[0.14em] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline"
+                  className="text-micro font-medium uppercase tracking-caps text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline"
                 >
                   Ask the concierge
                 </Link>

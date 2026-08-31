@@ -29,7 +29,7 @@ function Badge({ tone, children }: { tone: "default" | "muted" | "accent"; child
 
   return (
     <span
-      className={`inline-flex items-center border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.1em] ${toneClasses}`}
+      className={`inline-flex items-center border px-2.5 py-1 text-micro font-medium uppercase tracking-caps-tight ${toneClasses}`}
     >
       {children}
     </span>

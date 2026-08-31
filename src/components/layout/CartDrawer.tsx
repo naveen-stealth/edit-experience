@@ -20,16 +20,16 @@ export function CartDrawer() {
       <button aria-label="Close bag" onClick={closeCart} className="absolute inset-0 bg-pine/30" />
       <div className="relative flex h-full w-full max-w-md flex-col bg-ivory">
         <div className="flex items-center justify-between border-b border-pine-12 px-6 py-5">
-          <h2 className="font-serif text-2xl text-pine">Your Bag</h2>
-          <button type="button" onClick={closeCart} aria-label="Close bag" className="-m-2 p-2 text-[11px] uppercase tracking-[0.14em] text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine">
+          <h2 className="font-serif text-title-sm text-pine">Your Bag</h2>
+          <button type="button" onClick={closeCart} aria-label="Close bag" className="-m-2 p-2 text-micro uppercase tracking-caps text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine">
             Close
           </button>
         </div>
 
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
-            <p className="text-sm text-pine-45">Your bag is empty.</p>
-            <LinkButton href="/new-in" variant="on-light" onClick={closeCart}>
+            <p className="text-body-sm text-pine-45">Your bag is empty.</p>
+            <LinkButton href="/new-arrivals" variant="on-light" onClick={closeCart}>
               Shop New Arrivals
             </LinkButton>
           </div>
@@ -42,14 +42,14 @@ export function CartDrawer() {
                     <ProductMedia product={line.product} />
                   </Link>
                   <div className="flex flex-1 flex-col">
-                    <p className="text-[11px] uppercase tracking-[0.1em] text-pine-45">{line.product.brand}</p>
-                    <p className="text-[14px] text-pine">{line.product.title}</p>
+                    <p className="text-micro uppercase tracking-caps-tight text-pine-45">{line.product.brand}</p>
+                    <p className="text-body text-pine">{line.product.title}</p>
                     {line.unavailable ? (
-                      <p className="mt-1 text-[12px] text-rust">No longer available</p>
+                      <p className="mt-1 text-caption text-rust">No longer available</p>
                     ) : (
-                      <p className="mt-1 text-[13px] text-pine-70">{formatMoney(line.lineTotal)}</p>
+                      <p className="mt-1 text-body-sm text-pine-70">{formatMoney(line.lineTotal)}</p>
                     )}
-                    <div className="mt-2 flex items-center gap-3 text-[12px]">
+                    <div className="mt-2 flex items-center gap-3 text-caption">
                       {!line.unavailable && line.product.quantity > 1 && (
                         <label className="flex items-center gap-2 text-pine-45">
                           Qty
@@ -76,17 +76,17 @@ export function CartDrawer() {
             </ul>
 
             <div className="border-t border-pine-12 px-6 py-6">
-              <div className="mb-4 flex items-center justify-between text-[13px] text-pine">
+              <div className="mb-4 flex items-center justify-between text-body-sm text-pine">
                 <span className="text-pine-45">Subtotal</span>
                 <span>{formatMoney(subtotal)}</span>
               </div>
-              <p className="mb-4 text-[12px] text-pine-45">Shipping and any applicable duties are calculated at checkout.</p>
-              <LinkButton href="/cart" variant="solid" className="w-full justify-center" onClick={closeCart}>
+              <p className="mb-4 text-caption text-pine-45">Shipping and any applicable duties are calculated at checkout.</p>
+              <LinkButton href="/bag" variant="solid" className="w-full justify-center" onClick={closeCart}>
                 Go to Bag
               </LinkButton>
               <Link
                 href={conciergeWhatsAppUrl()}
-                className="mt-3 block py-1 text-center text-[12px] text-pine-45 underline-offset-2 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+                className="mt-3 block py-1 text-center text-caption text-pine-45 underline-offset-2 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
               >
                 Speak to Concierge
               </Link>

@@ -5,7 +5,7 @@ import { conciergeWhatsAppUrl } from "@/lib/whatsapp";
 /** Full-bleed, matching the nav below it — chrome runs to the window edge. */
 export function UtilityBar() {
   return (
-    <div className="hidden bg-black px-5 py-2 text-[10.5px] tracking-[0.04em] text-ivory-92 tablet:flex tablet:items-center tablet:justify-between tablet:px-10">
+    <div className="hidden bg-black px-5 py-2 text-micro text-ivory-92 tablet:flex tablet:items-center tablet:justify-between tablet:px-10">
       <div className="flex items-center gap-4">
         <span>{STORE_INFO.city}, India</span>
         <Dot />

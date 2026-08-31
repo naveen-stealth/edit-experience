@@ -33,7 +33,7 @@ export function IconButton({
     >
       <span
         style={{ width: size, height: size }}
-        className={`flex items-center justify-center rounded-full border text-[13px] transition duration-150 ease-luxury group-active/icon:scale-90 motion-reduce:group-active/icon:scale-100 ${
+        className={`flex items-center justify-center rounded-full border text-body-sm transition duration-150 ease-luxury group-active/icon:scale-90 motion-reduce:group-active/icon:scale-100 ${
           onDark
             ? "border-ivory-45 text-ivory group-hover/icon:border-ivory"
             : "border-pine-22 text-pine group-hover/icon:border-pine"

@@ -27,12 +27,12 @@ export function FilterPanel({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4 border-b border-pine-12 pb-3">
-        <h2 className="text-[13px] tracking-[0.02em] text-pine">Filter by</h2>
+        <h2 className="text-body-sm text-pine">Filter by</h2>
         {activeCount > 0 && (
           <Link
             href={clearHref}
             scroll={false}
-            className="text-[11px] font-medium uppercase tracking-[0.14em] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+            className="text-micro font-medium uppercase tracking-caps text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
           >
             Clear all
           </Link>

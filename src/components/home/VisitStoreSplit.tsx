@@ -30,7 +30,7 @@ export function VisitStoreSplit() {
       </div>
       <div className="flex flex-col justify-center bg-ivory py-14 tablet:py-20">
         <SplitPanel side="right" className="tablet:pl-14">
-          <h2 className="text-[30px] leading-tight text-pine tablet:text-[36px]">Visit the store</h2>
+          <h2 className="text-title text-pine tablet:text-display-sm">Visit the store</h2>
           <div className="mt-2">
             <Row label="Address">
               {STORE_INFO.addressLines.map((line) => (
@@ -46,7 +46,7 @@ export function VisitStoreSplit() {
             ))}
             <Row label="Phone">{STORE_INFO.phoneDisplay}</Row>
           </div>
-          <LinkButton href="/visit-store" variant="on-light" className="mt-6">
+          <LinkButton href="/stores" variant="on-light" className="mt-6">
             Get Directions
           </LinkButton>
         </SplitPanel>
@@ -57,7 +57,7 @@ export function VisitStoreSplit() {
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex justify-between border-b border-pine-12 py-3.5 text-[13.5px]">
+    <div className="flex justify-between border-b border-pine-12 py-3.5 text-body-sm">
       <span className="text-pine-45">{label}</span>
       <span className="text-right text-pine">{children}</span>
     </div>

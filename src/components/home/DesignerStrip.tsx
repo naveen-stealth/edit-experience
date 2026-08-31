@@ -11,7 +11,7 @@ export function DesignerStrip({ designers }: { designers: Designer[] }) {
             <Link
               key={designer.id}
               href={`/designers/${designer.handle}`}
-              className="font-serif text-[22px] text-pine-70 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine"
+              className="font-serif text-title-sm text-pine-70 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine"
             >
               {designer.name}
             </Link>

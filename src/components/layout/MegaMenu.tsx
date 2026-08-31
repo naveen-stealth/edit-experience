@@ -23,9 +23,14 @@ export function MegaMenu({
 }) {
   return (
     <div
-      // Origin at the top edge so it reads as unfolding down out of the nav
-      // rather than arriving from nowhere.
-      className={`absolute inset-x-0 top-full origin-top border-b border-pine-12 bg-ivory shadow-[0_18px_40px_rgba(4,30,26,0.10)] transition duration-200 ease-luxury ${
+      /*
+       * Origin at the top edge so it reads as unfolding down out of the nav.
+       * Same material as the nav bar — translucent ivory over backdrop blur,
+       * hairline bottom border, no drop shadow — so the open panel reads as the
+       * nav extending, not a separate surface floating over the page. Same
+       * solid-ivory fallback where backdrop-filter is unsupported.
+       */
+      className={`absolute inset-x-0 top-full origin-top border-b border-pine-12 bg-ivory-92 backdrop-blur-md backdrop-saturate-150 transition duration-200 ease-luxury supports-[not(backdrop-filter:blur(0px))]:bg-ivory ${
         open
           ? "visible translate-y-0 opacity-100"
           : "invisible -translate-y-1 opacity-0 motion-reduce:translate-y-0"
@@ -36,7 +41,7 @@ export function MegaMenu({
       <div className="mx-auto grid max-w-(--container-page) gap-10 px-10 py-10 tablet:grid-cols-4">
         {columns.map((column) => (
           <div key={column.heading}>
-            <p className="mb-4 text-[10.5px] font-medium uppercase tracking-[0.16em] text-pine-45">
+            <p className="mb-4 text-micro font-medium uppercase tracking-caps text-pine-45">
               {column.heading}
             </p>
             <ul className="space-y-2.5">
@@ -45,7 +50,7 @@ export function MegaMenu({
                   <Link
                     href={link.href}
                     tabIndex={open ? undefined : -1}
-                    className="block py-0.5 text-[13px] text-pine transition-opacity duration-150 ease-luxury hover:opacity-60 active:opacity-50"
+                    className="block py-0.5 text-body-sm text-pine transition-opacity duration-150 ease-luxury hover:opacity-60 active:opacity-50"
                   >
                     {link.label}
                   </Link>

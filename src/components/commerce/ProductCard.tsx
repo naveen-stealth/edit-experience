@@ -51,14 +51,14 @@ export function ProductCard({
       <div className="mt-4">
         {showBrand && (
           <p
-            className={`mb-1.5 text-[11px] uppercase tracking-[0.1em] ${
+            className={`mb-1.5 text-micro uppercase tracking-caps-tight ${
               onDark ? "text-ivory-45" : "text-pine-45"
             }`}
           >
             {product.brand}
           </p>
         )}
-        <h3 className={`text-[15px] leading-snug ${onDark ? "text-ivory" : "text-pine"}`}>
+        <h3 className={`text-body leading-snug ${onDark ? "text-ivory" : "text-pine"}`}>
           {product.title}
         </h3>
         <ProductPrice product={product} onDark={onDark} muted className="mt-1 block" />

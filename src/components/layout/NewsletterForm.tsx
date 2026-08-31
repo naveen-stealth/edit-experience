@@ -24,7 +24,7 @@ export function NewsletterForm() {
   }
 
   if (status === "success") {
-    return <p className="text-[12.5px] text-ivory-70">Thank you — we&rsquo;ll be in touch.</p>;
+    return <p className="text-caption text-ivory-70">Thank you — we&rsquo;ll be in touch.</p>;
   }
 
   return (
@@ -48,18 +48,18 @@ export function NewsletterForm() {
           placeholder="Email address"
           aria-invalid={status === "error"}
           aria-describedby={status === "error" ? "newsletter-email-error" : undefined}
-          className="flex-1 bg-transparent text-[12.5px] text-ivory placeholder:text-ivory-45 focus:outline-none"
+          className="flex-1 bg-transparent text-caption text-ivory placeholder:text-ivory-45 focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="shrink-0 text-[11px] uppercase tracking-[0.14em] text-ivory transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-50 disabled:opacity-50"
+          className="shrink-0 text-micro uppercase tracking-caps text-ivory transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-50 disabled:opacity-50"
         >
           {status === "submitting" ? "Sending…" : "Subscribe"}
         </button>
       </form>
       {status === "error" && (
-        <p id="newsletter-email-error" role="alert" className="mt-2 text-[11.5px] text-[#e8b4a0]">
+        <p id="newsletter-email-error" role="alert" className="mt-2 text-micro text-[#e8b4a0]">
           Please enter a valid email address.
         </p>
       )}

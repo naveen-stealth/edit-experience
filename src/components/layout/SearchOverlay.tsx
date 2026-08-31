@@ -43,9 +43,9 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search brand, product or category"
-            className="focus-ring-none min-w-0 flex-1 bg-transparent font-serif text-2xl text-pine placeholder:text-pine-45 focus:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
+            className="focus-ring-none min-w-0 flex-1 bg-transparent font-serif text-title-sm text-pine placeholder:text-pine-45 focus:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
           />
-          <button type="button" onClick={handleClose} aria-label="Close search" className="-m-2 p-2 text-[11px] uppercase tracking-[0.14em] text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine">
+          <button type="button" onClick={handleClose} aria-label="Close search" className="-m-2 p-2 text-micro uppercase tracking-caps text-pine-45 transition-colors duration-150 ease-luxury hover:text-pine active:text-pine">
             Close
           </button>
         </Container>
@@ -55,14 +55,14 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
         <Container>
         {query.trim().length === 0 ? (
           <div>
-            <p className="mb-4 text-[11px] uppercase tracking-[0.14em] text-pine-45">Shop by category</p>
+            <p className="mb-4 text-micro uppercase tracking-caps text-pine-45">Shop by category</p>
             <div className="flex flex-wrap gap-3">
               {CATEGORIES.map((c) => (
                 <Link
                   key={c.id}
                   href={`/categories/${c.handle}`}
                   onClick={handleClose}
-                  className="border border-pine-22 px-4 py-2.5 text-[13px] text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
+                  className="border border-pine-22 px-4 py-2.5 text-body-sm text-pine transition duration-150 ease-luxury hover:border-pine active:scale-[0.98] motion-reduce:active:scale-100"
                 >
                   {c.name}
                 </Link>
@@ -70,7 +70,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             </div>
           </div>
         ) : results.length === 0 ? (
-          <p className="text-sm text-pine-45">
+          <p className="text-body-sm text-pine-45">
             Nothing matched &ldquo;{query}&rdquo;. Our concierge can help source it — see the Concierge page.
           </p>
         ) : (
@@ -83,8 +83,8 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                   className="flex items-center justify-between gap-6 py-4 transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60"
                 >
                   <span>
-                    <span className="block text-[11px] uppercase tracking-[0.1em] text-pine-45">{product.brand}</span>
-                    <span className="block text-[15px] text-pine">{product.title}</span>
+                    <span className="block text-micro uppercase tracking-caps-tight text-pine-45">{product.brand}</span>
+                    <span className="block text-body text-pine">{product.title}</span>
                   </span>
                   <ProductPrice product={product} />
                 </Link>

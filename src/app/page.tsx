@@ -44,7 +44,7 @@ export default function HomePage() {
           imageSrc="/storefront.png"
           imageAlt="Inside the Edit Experience store — shelves of bags beneath an arched window"
           footer={
-            <LinkButton href="/about" variant="on-light">
+            <LinkButton href="/our-story" variant="on-light">
               Our Story
             </LinkButton>
           }
@@ -63,7 +63,7 @@ export default function HomePage() {
           eyebrow="Just In"
           title="New Arrivals"
           products={newArrivals}
-          viewAllHref="/new-in"
+          viewAllHref="/new-arrivals"
           layout="carousel"
         />
       </Section>
@@ -85,7 +85,7 @@ export default function HomePage() {
             title={eveningEdit.title}
             description={eveningEdit.description}
             products={newArrivals}
-            viewAllHref={`/collections/${eveningEdit.handle}`}
+            viewAllHref="/categories/bags"
             layout="carousel"
             onDark
           />
@@ -108,7 +108,7 @@ export default function HomePage() {
           imageAlt="A gloved hand inspecting a Goyard tote before it is listed"
           reverse
           footer={
-            <LinkButton href="/authenticity" variant="on-light">
+            <LinkButton href="/authenticity-promise" variant="on-light">
               How We Authenticate
             </LinkButton>
           }

@@ -125,7 +125,6 @@ export const NAV_PRIMARY: NavItem[] = [
     ],
   },
   { label: "Private Sourcing", href: "/private-sourcing" },
-  { label: "Our Story", href: "/our-story" },
 ];
 
 /** Header utility row, left of the logo. */
@@ -134,12 +133,12 @@ export const NAV_UTILITY_LEFT = [
   { label: "Stores", href: "/stores" },
 ];
 
-/** Header utility row, right of the logo. */
-export const NAV_UTILITY_RIGHT = [
-  { label: "Account", href: "/account" },
-  { label: "Wishlist", href: "/wishlist" },
-  { label: "Concierge", href: "/concierge" },
-];
+/**
+ * Header utility row, right of the logo — words only. Search, account and bag
+ * render as icons in HeaderNav (they're chrome, not content), and the bag link
+ * replaced wishlist: the wishlist lives as a tab on the /bag page.
+ */
+export const NAV_UTILITY_RIGHT = [{ label: "Concierge", href: "/concierge" }];
 
 /**
  * The only category listings the site exposes, taken from the nav design.

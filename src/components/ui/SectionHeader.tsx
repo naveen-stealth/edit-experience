@@ -20,9 +20,9 @@ export function SectionHeader({
           {eyebrow}
         </Eyebrow>
       )}
-      <h2 className={`text-[32px] leading-tight sm:text-[40px] ${onDark ? "text-ivory" : "text-pine"}`}>{title}</h2>
+      <h2 className={`text-title sm:text-display-sm ${onDark ? "text-ivory" : "text-pine"}`}>{title}</h2>
       {description && (
-        <p className={`mt-3.5 text-sm leading-relaxed font-light ${onDark ? "text-ivory-70" : "text-pine-45"}`}>
+        <p className={`mt-3.5 text-body-sm font-light ${onDark ? "text-ivory-70" : "text-pine-45"}`}>
           {description}
         </p>
       )}

@@ -18,7 +18,7 @@ export function ProductPrice({
 
   if (!decision.showPrice) {
     return (
-      <span className={`text-[13px] ${onDark ? "text-ivory-45" : "text-pine-45"} ${className}`}>
+      <span className={`text-body-sm ${onDark ? "text-ivory-45" : "text-pine-45"} ${className}`}>
         Price on request
       </span>
     );
@@ -26,7 +26,7 @@ export function ProductPrice({
 
   return (
     <span
-      className={`text-[13px] ${
+      className={`text-body-sm ${
         muted ? (onDark ? "text-ivory-70" : "text-pine-70") : onDark ? "text-ivory" : "text-pine"
       } ${className}`}
     >

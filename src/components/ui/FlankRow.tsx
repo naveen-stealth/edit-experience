@@ -14,7 +14,7 @@ export function FlankRow({
 
   return (
     <div
-      className={`hidden items-center justify-between text-[11px] uppercase tracking-[0.22em] tablet:flex ${textColor} ${className}`}
+      className={`hidden items-center justify-between text-micro uppercase tracking-eyebrow tablet:flex ${textColor} ${className}`}
     >
       <span>{left}</span>
       <span className={`mx-6 h-px flex-1 ${ruleColor}`} aria-hidden />

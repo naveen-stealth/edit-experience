@@ -27,7 +27,7 @@ export function SortSelect() {
         <select
           value={current}
           onChange={(e) => router.push(setHref({ sort: e.target.value }), { scroll: false })}
-          className="w-full min-w-0 appearance-none border border-pine-22 bg-transparent py-2.5 pr-9 pl-4 text-[11px] font-medium uppercase tracking-[0.14em] text-pine transition-colors duration-150 ease-luxury hover:border-pine focus:border-pine focus:outline-none"
+          className="w-full min-w-0 appearance-none border border-pine-22 bg-transparent py-2.5 pr-9 pl-4 text-micro font-medium uppercase tracking-caps text-pine transition-colors duration-150 ease-luxury hover:border-pine focus:border-pine focus:outline-none"
         >
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>

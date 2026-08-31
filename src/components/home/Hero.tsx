@@ -21,7 +21,7 @@ export function Hero() {
           <Eyebrow onDark className="mb-3.5 block">
             This Week&rsquo;s Selection
           </Eyebrow>
-          <h1 className="text-[38px] leading-[1.08] text-ivory tablet:text-[58px]">
+          <h1 className="text-display-sm text-ivory tablet:text-display">
             Pieces Worth
             <br />
             the Wait

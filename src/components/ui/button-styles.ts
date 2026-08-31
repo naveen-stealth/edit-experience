@@ -8,7 +8,7 @@ export function buttonClasses(variant: ButtonVariant, className = ""): string {
    * rather than making the user wait for release.
    */
   const base =
-    "inline-flex items-center gap-2.5 border px-7 py-[15px] text-[11.5px] font-medium uppercase tracking-[0.14em] transition duration-150 ease-luxury active:scale-[0.98] motion-reduce:active:scale-100 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100";
+    "inline-flex items-center gap-2.5 border px-7 py-[15px] text-micro font-medium uppercase tracking-caps transition duration-150 ease-luxury active:scale-[0.98] motion-reduce:active:scale-100 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100";
 
   const variants: Record<ButtonVariant, string> = {
     "on-dark": "border-ivory text-ivory hover:bg-ivory hover:text-pine",

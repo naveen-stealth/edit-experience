@@ -25,20 +25,20 @@ export function ProductBuyPanel({ product }: { product: Product }) {
   return (
     <div>
       {decision.state === "add_to_bag" && product.availability === "low_stock" && (
-        <p className="mb-4 text-[12.5px] text-rust">Only one available — this is the last of this piece.</p>
+        <p className="mb-4 text-caption text-rust">Only one available — this is the last of this piece.</p>
       )}
       {decision.state === "sold" && (
-        <p className="mb-4 text-[12.5px] text-pine-45">
+        <p className="mb-4 text-caption text-pine-45">
           This piece has sold. The concierge can look for something comparable.
         </p>
       )}
       {decision.state === "reserved" && (
-        <p className="mb-4 text-[12.5px] text-pine-45">
+        <p className="mb-4 text-caption text-pine-45">
           Currently reserved for another client. Ask to be told if it becomes available.
         </p>
       )}
       {decision.state === "enquire" && (
-        <p className="mb-4 text-[12.5px] text-pine-45">
+        <p className="mb-4 text-caption text-pine-45">
           Available by enquiry, with concierge support through to delivery.
         </p>
       )}
@@ -59,7 +59,7 @@ export function ProductBuyPanel({ product }: { product: Product }) {
         ) : (
           <Link
             href={decision.state === "sold" ? "/concierge" : enquiryUrl}
-            className="inline-flex flex-1 items-center justify-center gap-2.5 border border-pine bg-pine px-7 py-[15px] text-[11.5px] font-medium uppercase tracking-[0.14em] text-ivory transition duration-150 ease-luxury hover:bg-[#0a3129] active:scale-[0.98] motion-reduce:active:scale-100"
+            className="inline-flex flex-1 items-center justify-center gap-2.5 border border-pine bg-pine px-7 py-[15px] text-micro font-medium uppercase tracking-caps text-ivory transition duration-150 ease-luxury hover:bg-[#0a3129] active:scale-[0.98] motion-reduce:active:scale-100"
           >
             {decision.state === "sold" ? decision.secondaryCtaLabel : decision.primaryCtaLabel}
           </Link>
@@ -71,7 +71,7 @@ export function ProductBuyPanel({ product }: { product: Product }) {
       {decision.state !== "sold" && (
         <Link
           href={enquiryUrl}
-          className="mt-3.5 inline-block text-[12px] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+          className="mt-3.5 inline-block text-caption text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
         >
           {decision.secondaryCtaLabel}
         </Link>

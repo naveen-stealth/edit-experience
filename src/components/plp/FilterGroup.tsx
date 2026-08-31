@@ -35,7 +35,7 @@ export function FilterGroup({
 
   return (
     <div className="border-b border-pine-12 py-5">
-      <h3 className="mb-3 text-[11px] font-medium uppercase tracking-[0.14em] text-pine">{heading}</h3>
+      <h3 className="mb-3 text-micro font-medium uppercase tracking-caps text-pine">{heading}</h3>
       <ul className="space-y-1">
         {visible.map((option) => {
           const checked = isChecked(facetKey, option.value);
@@ -45,7 +45,7 @@ export function FilterGroup({
                 href={toggleHref(facetKey, option.value)}
                 scroll={false}
                 aria-pressed={checked}
-                className="group/opt flex items-center gap-2.5 py-1.5 text-[13px] transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60"
+                className="group/opt flex items-center gap-2.5 py-1.5 text-body-sm transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60"
               >
                 <span
                   aria-hidden
@@ -71,7 +71,7 @@ export function FilterGroup({
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
+          className="mt-2.5 text-micro font-medium uppercase tracking-caps text-pine-45 underline-offset-4 transition-colors duration-150 ease-luxury hover:text-pine hover:underline active:text-pine"
         >
           {expanded ? "Show less" : `Show all ${options.length}`}
         </button>

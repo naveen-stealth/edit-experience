@@ -42,7 +42,7 @@ export async function generateMetadata(props: PageProps<"/products/[handle]">): 
 function Spec({ label, value }: { label: string; value?: string | number }) {
   if (value === undefined || value === "") return null;
   return (
-    <div className="flex justify-between gap-6 border-b border-pine-12 py-3 text-[13.5px]">
+    <div className="flex justify-between gap-6 border-b border-pine-12 py-3 text-body-sm">
       <dt className="text-pine-45">{label}</dt>
       <dd className="text-right text-pine">{value}</dd>
     </div>
@@ -89,22 +89,22 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
                 </a>
               </Eyebrow>
 
-              <h1 className="font-serif text-[26px] leading-tight text-pine tablet:text-[32px]">{product.title}</h1>
+              <h1 className="font-serif text-title text-pine tablet:text-title">{product.title}</h1>
 
               <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 {decision.showPrice ? (
                   <>
-                    <p className="text-[19px] text-pine">{formatMoney(product.price)}</p>
+                    <p className="text-body-lg text-pine">{formatMoney(product.price)}</p>
                     {product.compareAtPrice && (
-                      <p className="text-[14px] text-pine-45 line-through">{formatMoney(product.compareAtPrice)}</p>
+                      <p className="text-body text-pine-45 line-through">{formatMoney(product.compareAtPrice)}</p>
                     )}
                   </>
                 ) : (
-                  <p className="text-[17px] text-pine">Price on request</p>
+                  <p className="text-body-lg text-pine">Price on request</p>
                 )}
               </div>
 
-              <p className="mt-1.5 text-[12.5px] text-pine-45">
+              <p className="mt-1.5 text-caption text-pine-45">
                 {CONDITION_LABEL[product.condition]} condition · Inspected in-house
               </p>
 
@@ -191,7 +191,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
             eyebrow="You May Also Like"
             title="More to consider"
             products={related}
-            viewAllHref={category ? `/categories/${category.handle}` : "/new-in"}
+            viewAllHref={category ? `/categories/${category.handle}` : "/new-arrivals"}
             layout="carousel"
           />
         </Section>

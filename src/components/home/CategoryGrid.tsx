@@ -7,7 +7,7 @@ import type { Category } from "@/lib/commerce/types";
 
 export function CategoryGrid({ categories }: { categories: Category[] }) {
   return (
-    <div className="grid grid-cols-1 gap-7 tablet:grid-cols-3">
+    <div className="grid grid-cols-1 gap-(--grid-gutter) tablet:grid-cols-3">
       {categories.map((category) => (
         <Link key={category.id} href={`/categories/${category.handle}`} className="group block transition-transform duration-150 ease-luxury active:scale-[0.99] motion-reduce:active:scale-100">
           <div className="relative w-full min-h-[380px] overflow-hidden" style={{ aspectRatio: "3/4" }}>
@@ -32,7 +32,7 @@ export function CategoryGrid({ categories }: { categories: Category[] }) {
               <Eyebrow onDark className="mb-1.5 block">
                 Shop
               </Eyebrow>
-              <h3 className="text-[26px]">{category.name}</h3>
+              <h3 className="text-title">{category.name}</h3>
             </div>
             <span className="absolute bottom-6 right-5 flex h-8 w-8 items-center justify-center rounded-full border border-ivory-45 text-ivory">
               <ArrowRightIcon className="h-3.5 w-3.5" strokeWidth={1.5} />

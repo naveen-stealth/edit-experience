@@ -239,7 +239,7 @@ export function ProductCarousel({
     <div className="relative">
       <div
         ref={scrollerRef}
-        className="page-spine-pl flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="page-spine-pl flex snap-x snap-mandatory gap-(--grid-gutter) overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {items.map((product, i) => {
           /*

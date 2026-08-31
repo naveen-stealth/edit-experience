@@ -33,10 +33,10 @@ export function ProductRail({
             {eyebrow}
           </Eyebrow>
         )}
-        <h2 className={`text-[30px] tablet:text-[36px] ${onDark ? "text-ivory" : "text-pine"}`}>{title}</h2>
+        <h2 className={`text-title tablet:text-display-sm ${onDark ? "text-ivory" : "text-pine"}`}>{title}</h2>
         {description && (
           <p
-            className={`mt-2 max-w-md text-[14px] font-light ${
+            className={`mt-2 max-w-md text-body font-light ${
               onDark ? "text-ivory-70" : "text-pine-45"
             }`}
           >
@@ -46,7 +46,7 @@ export function ProductRail({
       </div>
       <ArrowLink
         href={viewAllHref}
-        className={`text-[11.5px] uppercase tracking-[0.14em] transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60 ${
+        className={`text-micro uppercase tracking-caps transition-opacity duration-150 ease-luxury hover:opacity-70 active:opacity-60 ${
           onDark ? "text-ivory" : "text-pine"
         }`}
       >

@@ -29,7 +29,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12 tablet:grid-cols-4">
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.heading}>
-              <h4 className="mb-5 text-[10.5px] font-medium uppercase tracking-[0.16em] text-ivory">
+              <h4 className="mb-5 text-micro font-medium uppercase tracking-caps text-ivory">
                 {column.heading}
               </h4>
               <ul className="space-y-3">
@@ -37,7 +37,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-[12.5px] text-ivory-45 transition-colors duration-150 ease-luxury hover:text-ivory active:text-ivory"
+                      className="text-caption text-ivory-45 transition-colors duration-150 ease-luxury hover:text-ivory active:text-ivory"
                     >
                       {link.label}
                     </Link>
@@ -48,7 +48,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-ivory-10 pt-6 text-[11px] text-ivory-45">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-ivory-10 pt-6 text-micro text-ivory-45">
           <span>
             © {new Date().getFullYear()} {SITE_NAME}. All Rights Reserved.
           </span>
@@ -61,7 +61,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.title}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-ivory-18 text-[10px] tracking-[0.06em] text-ivory-70 transition duration-150 ease-luxury hover:border-ivory-45 hover:text-ivory active:scale-95 motion-reduce:active:scale-100"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-ivory-18 text-micro tracking-caps-tight text-ivory-70 transition duration-150 ease-luxury hover:border-ivory-45 hover:text-ivory active:scale-95 motion-reduce:active:scale-100"
                 >
                   {social.label}
                 </a>
@@ -70,7 +70,7 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.title}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-ivory-18 text-[10px] tracking-[0.06em] text-ivory-70 transition duration-150 ease-luxury hover:border-ivory-45 hover:text-ivory active:scale-95 motion-reduce:active:scale-100"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-ivory-18 text-micro tracking-caps-tight text-ivory-70 transition duration-150 ease-luxury hover:border-ivory-45 hover:text-ivory active:scale-95 motion-reduce:active:scale-100"
                 >
                   {social.label}
                 </Link>
