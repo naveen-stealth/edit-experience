@@ -13,7 +13,14 @@ export function Hero() {
         fill
         preload
         sizes="100vw"
-        className="object-cover object-[62%_38%] tablet:object-[70%_center]"
+        /*
+          Tuned for the 2026-08 hero shot (1659x948, bag handles from y~12%).
+          Desktop viewports are wider than the source, so the crop is vertical —
+          y 30% keeps the handles clear of the top edge even at 1728px, spending
+          the crop on the rug instead. Mobile crops horizontally (x 62% holds
+          the bag in frame); y is irrelevant there.
+        */
+        className="object-cover object-[62%_38%] tablet:object-[70%_30%]"
       />
       <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(4,30,26,0.92)_0%,rgba(4,30,26,0.72)_32%,rgba(4,30,26,0.28)_58%,rgba(4,30,26,0.05)_78%),linear-gradient(180deg,rgba(4,30,26,0.05)_0%,rgba(4,30,26,0.3)_55%,rgba(4,30,26,0.88)_100%)]" />
       <Container className="relative z-10 py-14 tablet:py-16">

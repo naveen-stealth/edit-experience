@@ -2,12 +2,15 @@ import Link from "next/link";
 import type { NavColumn } from "@/lib/content/site";
 
 /**
- * A full-width dropdown, spanning the viewport beneath the nav row.
+ * Dropdown content only — no background, blur or border of its own. The
+ * material is the header's single curtain (see HeaderNav), which stretches to
+ * cover this panel; painting a second surface here is what used to create the
+ * divided look, because a nested backdrop-filter can't sample the page through
+ * its ancestor's backdrop root.
  *
- * `absolute` against the header rather than `fixed`: it should travel with the
- * sticky header and stay inside its stacking context. It also can't be `fixed`
- * here — the header's `backdrop-filter` establishes a containing block, so a
- * fixed child would be sized against the header instead of the screen.
+ * Timing is asymmetric, apple.com-style: entering content waits a beat for the
+ * curtain to lead and settles slightly downward into place; exiting content
+ * gets out fast so the curtain can retract over empty glass.
  *
  * `invisible` rather than `hidden` keeps the panel transitionable while still
  * removing it from hit-testing and the tab order when closed.
@@ -23,17 +26,10 @@ export function MegaMenu({
 }) {
   return (
     <div
-      /*
-       * Origin at the top edge so it reads as unfolding down out of the nav.
-       * Same material as the nav bar — translucent ivory over backdrop blur,
-       * hairline bottom border, no drop shadow — so the open panel reads as the
-       * nav extending, not a separate surface floating over the page. Same
-       * solid-ivory fallback where backdrop-filter is unsupported.
-       */
-      className={`absolute inset-x-0 top-full origin-top border-b border-pine-12 bg-ivory-92 backdrop-blur-md backdrop-saturate-150 transition duration-200 ease-luxury supports-[not(backdrop-filter:blur(0px))]:bg-ivory ${
+      className={`transition-[opacity,transform] ease-luxury ${
         open
-          ? "visible translate-y-0 opacity-100"
-          : "invisible -translate-y-1 opacity-0 motion-reduce:translate-y-0"
+          ? "visible translate-y-0 opacity-100 delay-100 duration-200"
+          : "invisible -translate-y-1 opacity-0 delay-0 duration-150 motion-reduce:translate-y-0"
       }`}
       aria-hidden={!open}
       onKeyDown={(e) => e.key === "Escape" && onDismiss()}
