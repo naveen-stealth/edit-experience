@@ -29,10 +29,12 @@ export function ProductCard({
     <Link href={`/products/${product.handle}`} tabIndex={tabIndex} className="group block">
       {/* Scale the photo inside a fixed frame rather than lifting its brightness:
           on pre-owned resale the photo is evidence of condition, so hover must
-          not alter the colour the buyer is judging. */}
-      <div className="relative overflow-hidden ring-1 ring-pine/5 ring-inset">
+          not alter the colour the buyer is judging. No ring: it framed opaque
+          photos, but around today's transparent cutouts it drew a ghost box. */}
+      <div className="relative overflow-hidden">
         <ProductMedia
           product={product}
+          onDark={onDark}
           className={`${
             hoverEffect
               ? "transition-transform duration-500 ease-luxury group-hover:scale-[1.03] group-active:scale-[1.01] motion-reduce:group-hover:scale-100"

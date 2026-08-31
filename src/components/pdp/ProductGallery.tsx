@@ -108,7 +108,7 @@ export function ProductGallery({
           className="flex snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {images.map((image, i) => (
-            <div key={i} className="relative w-full shrink-0 snap-start bg-ivory" style={{ aspectRatio: "4/5" }}>
+            <div key={i} className="relative w-full shrink-0 snap-start" style={{ aspectRatio: "4/5" }}>
               {isRealAsset(image.url) ? (
                 <Image
                   src={image.url}

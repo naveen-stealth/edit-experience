@@ -34,7 +34,9 @@ export function Hero() {
             the Wait
           </h1>
           <div className="mt-9">
-            <LinkButton href="/new-arrivals" variant="on-dark">
+            {/* Full-bleed-to-the-gutter on mobile for a thumb-sized target;
+                back to its natural inline width on desktop. */}
+            <LinkButton href="/new-arrivals" variant="on-dark" className="w-full justify-center tablet:w-auto">
               Explore the Collection
               <ArrowRightIcon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} aria-hidden />
             </LinkButton>
