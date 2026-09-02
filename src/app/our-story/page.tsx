@@ -24,7 +24,7 @@ export default function OurStoryPage() {
           </Eyebrow>
           <h1 className="text-display-sm text-pine tablet:text-display">Our Story</h1>
           <p className="mt-5 text-body font-light text-pine-70">
-            Edit Experience is a curated pre-owned luxury retailer — one physical store in{" "}
+            Edit Experience is a curated luxury retailer — one physical store in{" "}
             {STORE_INFO.city}, and a website built to make browsing and buying from it effortless.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function OurStoryPage() {
             <p>
               We started with a simple conviction: luxury isn&rsquo;t defined by abundance, but by
               discernment. Every piece here is hand-selected, inspected in-house, and priced to its
-              condition and rarity — never marked down, only ever thoughtfully edited.
+              rarity and the current market — never marked down, only ever thoughtfully edited.
             </p>
             <p>
               That conviction lives in a single store in Jubilee Hills. Keeping to one floor is
@@ -65,8 +65,9 @@ export default function OurStoryPage() {
               same small team, so what you see online is exactly what&rsquo;s in the store.
             </p>
             <p>
-              Pre-owned, to us, isn&rsquo;t a compromise — it&rsquo;s the most considered way to own
-              luxury. The pieces that reach our shelves have already proven they were worth keeping.
+              Everything on our shelves is brand new — sourced directly, never carried, never a
+              compromise. We buy a few of each piece, sometimes only one, so the edit stays sharp
+              and nothing lingers.
             </p>
             <PlaceholderNote />
           </div>
@@ -75,7 +76,7 @@ export default function OurStoryPage() {
 
       <EditedBand
         statement="Luxury isn't defined by abundance, but by discernment."
-        caption="Every piece hand-selected, inspected in-house, and priced to its condition and rarity."
+        caption="Every piece hand-selected, inspected in-house, and priced to its rarity and the current market."
       />
 
       <VisitStoreSplit />

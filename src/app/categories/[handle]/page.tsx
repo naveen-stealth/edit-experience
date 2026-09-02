@@ -31,7 +31,7 @@ export async function generateMetadata(props: PageProps<"/categories/[handle]">)
 
   return {
     title: category.name,
-    description: `Authenticated pre-owned ${category.name.toLowerCase()} at Edit Experience — inspected in-house, available online and in our Hyderabad store.`,
+    description: `Authenticated luxury ${category.name.toLowerCase()} at Edit Experience — brand new, inspected in-house, available online and in our Hyderabad store.`,
   };
 }
 
@@ -77,7 +77,7 @@ export default async function CategoryPage(props: PageProps<"/categories/[handle
       {/* No eyebrow — the title and description carry it. */}
       <ListingHero
         title={category.name}
-        description={`Every piece is inspected in-house before it's listed, priced to condition and rarity, and available to view online or in our store.`}
+        description={`Every piece is brand new, inspected in-house before it's listed, and available to view online or in our store.`}
         image={category.image}
       />
       <ProductListing

@@ -11,7 +11,6 @@ import { Section } from "@/components/ui/Section";
 import { getCategoryByHandle } from "@/lib/commerce/collections";
 import { getPurchaseDecision } from "@/lib/commerce/purchase";
 import { getAllProducts, getProductByHandle, getRelatedProducts } from "@/lib/commerce/products";
-import { CONDITION_LABEL } from "@/lib/commerce/types";
 import { formatMoney } from "@/lib/utils/format";
 
 export function generateStaticParams() {
@@ -31,8 +30,8 @@ export async function generateMetadata(props: PageProps<"/products/[handle]">): 
     openGraph: {
       title: `${product.brand} — ${product.title}`,
       description: decision.showPrice
-        ? `${formatMoney(product.price)} · ${CONDITION_LABEL[product.condition]} condition`
-        : `Available by enquiry · ${CONDITION_LABEL[product.condition]} condition`,
+        ? `${formatMoney(product.price)} · Brand new`
+        : `Available by enquiry · Brand new`,
       images: product.thumbnail.url.startsWith("/") ? [product.thumbnail.url] : undefined,
     },
   };
@@ -105,7 +104,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
               </div>
 
               <p className="mt-1.5 text-caption text-pine-45">
-                {CONDITION_LABEL[product.condition]} condition · Inspected in-house
+                Brand new · Inspected in-house
               </p>
 
               <div className="mt-7">
@@ -118,24 +117,13 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
                     {
                       id: "description",
                       label: "The Piece",
-                      content: (
-                        <div className="space-y-3.5">
-                          <p>{product.description}</p>
-                          {product.conditionNotes && (
-                            <p className="text-pine">
-                              <span className="text-pine-45">Condition notes: </span>
-                              {product.conditionNotes}
-                            </p>
-                          )}
-                        </div>
-                      ),
+                      content: <p>{product.description}</p>,
                     },
                     {
                       id: "details",
                       label: "Details",
                       content: (
                         <dl className="mt-1">
-                          <Spec label="Condition" value={CONDITION_LABEL[product.condition]} />
                           <Spec label="Colour" value={product.colour} />
                           <Spec label="Material" value={product.material} />
                           <Spec label="Size" value={product.size} />

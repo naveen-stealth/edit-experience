@@ -50,11 +50,14 @@ export default function HomePage() {
           }
         >
           <p>
-            Edit Experience is a curated pre-owned luxury retailer — one physical store in {STORE_INFO.city},
+            Edit Experience is a curated luxury retailer — one physical store in {STORE_INFO.city},
             and a website built to make it easy to browse, understand and buy from it without a WhatsApp
             thread for every question.
           </p>
-          <p>Every piece is inspected before it&rsquo;s listed. What you see is what&rsquo;s in the store.</p>
+          <p>
+            Every piece is brand new and inspected before it&rsquo;s listed. What you see is
+            what&rsquo;s in the store.
+          </p>
         </ImageTextSection>
       </Section>
 
@@ -93,7 +96,7 @@ export default function HomePage() {
       )}
 
       <EditedBand
-        statement="Every price reflects condition, rarity and current resale market — considered, not negotiated."
+        statement="Every price reflects rarity and the current market — considered, not negotiated."
         caption="Pieces above ₹5,00,000 are available by enquiry, with concierge support throughout."
       />
 

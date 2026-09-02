@@ -15,7 +15,7 @@ import { filterProducts, getAllProducts } from "@/lib/commerce/products";
 export const metadata: Metadata = {
   title: "New Arrivals",
   description:
-    "The latest authenticated pre-owned pieces to reach the store — inspected in-house and listed as they arrive.",
+    "The latest brand-new, authenticated pieces to reach the store — inspected in-house and listed as they arrive.",
 };
 
 export default async function NewArrivalsPage(props: PageProps<"/new-arrivals">) {

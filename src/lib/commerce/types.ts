@@ -21,15 +21,6 @@ export type ProductAvailability =
   | "reserved"
   | "enquire";
 
-export type ProductCondition = "unworn" | "excellent" | "very_good" | "good";
-
-export const CONDITION_LABEL: Record<ProductCondition, string> = {
-  unworn: "Unworn",
-  excellent: "Excellent",
-  very_good: "Very Good",
-  good: "Good",
-};
-
 export type ProductGender = "women" | "men" | "unisex";
 
 export interface ProductImage {
@@ -104,9 +95,6 @@ export interface Product {
   /** Above the configured enquiry threshold, PDP/PLP should not surface price even if purchaseMode is "direct". */
   purchaseMode: PurchaseMode;
 
-  condition: ProductCondition;
-  conditionNotes?: string;
-
   images: ProductImage[];
   thumbnail: ProductImage;
   video?: string;
@@ -147,7 +135,6 @@ export interface ProductFilters {
   subcategory?: string[];
   collectionHandle?: string;
   gender?: ProductGender;
-  condition?: ProductCondition[];
   priceMin?: number;
   priceMax?: number;
   colour?: string[];

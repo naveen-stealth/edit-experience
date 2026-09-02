@@ -28,9 +28,9 @@ export function ProductCard({
   return (
     <Link href={`/products/${product.handle}`} tabIndex={tabIndex} className="group block">
       {/* Scale the photo inside a fixed frame rather than lifting its brightness:
-          on pre-owned resale the photo is evidence of condition, so hover must
-          not alter the colour the buyer is judging. No ring: it framed opaque
-          photos, but around today's transparent cutouts it drew a ghost box. */}
+          the photo shows the exact piece being bought, so hover must not alter
+          the colour the buyer is judging. No ring: it framed opaque photos, but
+          around today's transparent cutouts it drew a ghost box. */}
       <div className="relative overflow-hidden">
         <ProductMedia
           product={product}

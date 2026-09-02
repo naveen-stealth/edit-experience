@@ -1,4 +1,4 @@
-import type { ProductAvailability, ProductCondition, ProductFilters, ProductSort } from "./types";
+import type { ProductAvailability, ProductFilters, ProductSort } from "./types";
 
 /**
  * The listing page keeps all of its state in the URL rather than in component
@@ -18,7 +18,7 @@ export const SORT_OPTIONS: { value: ProductSort; label: string }[] = [
 const SORT_VALUES = new Set<string>(SORT_OPTIONS.map((o) => o.value));
 
 /** Multi-select facets travel as comma-joined lists — `?colour=black,tan`. */
-export const LIST_KEYS = ["subcategory", "designer", "colour", "condition", "availability"] as const;
+export const LIST_KEYS = ["subcategory", "designer", "colour", "availability"] as const;
 export type ListKey = (typeof LIST_KEYS)[number];
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -52,7 +52,6 @@ export function readSort(params: RawSearchParams): ProductSort {
  * a stray `?category=` can't leak a shopper out of the page they're on.
  */
 export function parseFilters(params: RawSearchParams, scope: ProductFilters = {}): ProductFilters {
-  const condition = readList(params, "condition") as ProductCondition[];
   const availability = readList(params, "availability") as ProductAvailability[];
   const designer = readList(params, "designer");
   const colour = readList(params, "colour");
@@ -68,7 +67,6 @@ export function parseFilters(params: RawSearchParams, scope: ProductFilters = {}
      */
     designerHandles: scope.designerHandle || designer.length === 0 ? undefined : designer,
     subcategory: subcategory.length ? subcategory : undefined,
-    condition: condition.length ? condition : undefined,
     availability: availability.length ? availability : undefined,
     colour: colour.length ? colour : undefined,
     priceMin: readNumber(params, "priceMin"),

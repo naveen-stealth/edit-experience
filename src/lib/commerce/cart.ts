@@ -13,7 +13,7 @@ export interface CartLine {
   unavailable: boolean;
 }
 
-/** Luxury resale inventory is quantity = 1 in almost every case; never allow more than is in stock. */
+/** Curated luxury inventory is quantity = 1 in almost every case; never allow more than is in stock. */
 export function addToCart(items: CartLineItem[], product: Product, quantity = 1): CartLineItem[] {
   const decision = getPurchaseDecision(product);
   if (!decision.canAddToBag) return items;

@@ -7,7 +7,8 @@ export const CATEGORIES: Category[] = [
     name: "Bags",
     image: { url: "/category-bag.png", alt: "A Goyard tote styled on a velvet armchair" },
   },
-  { id: "cat-shoes", handle: "shoes", name: "Shoes" },
+  { id: "cat-footwear", handle: "footwear", name: "Footwear" },
+  { id: "cat-athleisure", handle: "athleisure", name: "Athleisure" },
   { id: "cat-watches", handle: "watches", name: "Watches" },
   { id: "cat-jewellery", handle: "jewellery", name: "Jewellery" },
   { id: "cat-accessories", handle: "accessories", name: "Accessories" },
@@ -126,6 +127,18 @@ export const DESIGNERS: Designer[] = [
     description: "Parisian trunk maker founded 1849, revived in 2010, known for the Gaby bag.",
   },
   {
+    id: "des-moncler",
+    handle: "moncler",
+    name: "Moncler",
+    description: "Alpine outerwear house founded 1952, known for the down jacket and Grenoble line.",
+  },
+  {
+    id: "des-loro-piana",
+    handle: "loro-piana",
+    name: "Loro Piana",
+    description: "Italian house founded 1924, known for cashmere and vicuña of uncompromising quality.",
+  },
+  {
     id: "des-valentino-garavani",
     handle: "valentino-garavani",
     name: "Valentino Garavani",
@@ -158,9 +171,9 @@ export const COLLECTIONS: Collection[] = [
     id: "col-icons-revisited",
     handle: "icons-revisited",
     title: "Icons Revisited",
-    subtitle: "The pieces that defined an era, back in circulation",
+    subtitle: "The pieces that defined an era, made new",
     description:
-      "Archive silhouettes from the houses that invented them — carried once, considered twice.",
+      "Signature silhouettes from the houses that invented them — current production, factory fresh.",
     productIds: [],
   },
   {

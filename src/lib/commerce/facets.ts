@@ -1,4 +1,4 @@
-import { CONDITION_LABEL, type Product, type ProductFilters } from "./types";
+import type { Product, ProductFilters } from "./types";
 import { DESIGNERS } from "./collections";
 import { slugify } from "@/lib/utils/slug";
 
@@ -12,12 +12,11 @@ export interface Facets {
   subcategory: FacetOption[];
   designer: FacetOption[];
   colour: FacetOption[];
-  condition: FacetOption[];
   availability: FacetOption[];
   priceBounds: { min: number; max: number } | null;
 }
 
-type FacetKey = "subcategory" | "designer" | "colour" | "condition" | "availability";
+type FacetKey = "subcategory" | "designer" | "colour" | "availability";
 
 const AVAILABILITY_LABEL: Record<string, string> = {
   in_stock: "Available",
@@ -45,9 +44,6 @@ function matchesExcept(product: Product, filters: ProductFilters, except: FacetK
   if (typeof filters.priceMin === "number" && product.price.amount < filters.priceMin) return false;
   if (typeof filters.priceMax === "number" && product.price.amount > filters.priceMax) return false;
 
-  if (except !== "condition" && filters.condition?.length && !filters.condition.includes(product.condition)) {
-    return false;
-  }
   if (
     except !== "availability" &&
     filters.availability?.length &&
@@ -116,13 +112,6 @@ export function computeFacets(scope: Product[], filters: ProductFilters): Facets
     ),
     designer: tally(scope, filters, "designer", (p) => p.designerHandle, (v) => DESIGNER_NAME.get(v) ?? v),
     colour: tally(scope, filters, "colour", (p) => p.colour, (v) => v),
-    condition: tally(
-      scope,
-      filters,
-      "condition",
-      (p) => p.condition,
-      (v) => CONDITION_LABEL[v as keyof typeof CONDITION_LABEL] ?? v
-    ),
     availability: tally(
       scope,
       filters,

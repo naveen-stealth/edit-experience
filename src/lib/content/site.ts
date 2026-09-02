@@ -11,7 +11,7 @@
 export const SITE_NAME = "Edit Experience";
 export const SITE_TAGLINE = "Authenticated luxury, selected by Edit.";
 export const SITE_DESCRIPTION =
-  "A curated selection of authenticated pre-owned luxury — bags, watches, jewellery and more — from a single store in Hyderabad, with concierge support for sourcing and enquiries.";
+  "A curated selection of brand-new, authenticated luxury — bags, footwear, jewellery and more — from a single store in Hyderabad, with concierge support for sourcing and enquiries.";
 
 export interface NavColumn {
   heading: string;
@@ -30,16 +30,6 @@ export interface NavItem {
  * source of truth: a route exists because it appears here, not the other way
  * round. Every href below resolves to a real page.
  */
-
-const CONDITION_LINKS = (category: string): NavColumn => ({
-  heading: "Condition",
-  links: [
-    { label: "Unworn", href: `${category}?condition=unworn` },
-    { label: "Excellent", href: `${category}?condition=excellent` },
-    { label: "Very Good", href: `${category}?condition=very_good` },
-    { label: "Good", href: `${category}?condition=good` },
-  ],
-});
 
 /** Designer links are drawn from designers that actually hold stock in that category. */
 const designerColumn = (category: string, designers: { label: string; handle: string }[]): NavColumn => ({
@@ -74,7 +64,6 @@ export const NAV_PRIMARY: NavItem[] = [
         { label: "Saint Laurent", handle: "saint-laurent" },
         { label: "Goyard", handle: "goyard" },
       ]),
-      CONDITION_LINKS("/categories/bags"),
     ],
   },
   {
@@ -90,7 +79,50 @@ export const NAV_PRIMARY: NavItem[] = [
         { label: "Saint Laurent", handle: "saint-laurent" },
         { label: "Gucci", handle: "gucci" },
       ]),
-      CONDITION_LINKS("/categories/clothing"),
+    ],
+  },
+  {
+    label: "Footwear",
+    href: "/categories/footwear",
+    panel: [
+      {
+        heading: "Shop",
+        links: [
+          { label: "All Footwear", href: "/categories/footwear" },
+          { label: "Flats", href: "/categories/footwear?subcategory=flats" },
+          { label: "Loafers", href: "/categories/footwear?subcategory=loafers" },
+          { label: "Sneakers", href: "/categories/footwear?subcategory=sneakers" },
+          { label: "Heels", href: "/categories/footwear?subcategory=heels" },
+        ],
+      },
+      designerColumn("/categories/footwear", [
+        { label: "Chanel", handle: "chanel" },
+        { label: "Gucci", handle: "gucci" },
+        { label: "Louis Vuitton", handle: "louis-vuitton" },
+        { label: "Saint Laurent", handle: "saint-laurent" },
+      ]),
+    ],
+  },
+  {
+    label: "Athleisure",
+    href: "/categories/athleisure",
+    panel: [
+      {
+        heading: "Shop",
+        links: [
+          { label: "All Athleisure", href: "/categories/athleisure" },
+          { label: "Track Jackets", href: "/categories/athleisure?subcategory=track-jackets" },
+          { label: "Joggers", href: "/categories/athleisure?subcategory=joggers" },
+          { label: "Leggings", href: "/categories/athleisure?subcategory=leggings" },
+          { label: "Hoodies", href: "/categories/athleisure?subcategory=hoodies" },
+        ],
+      },
+      designerColumn("/categories/athleisure", [
+        { label: "Moncler", handle: "moncler" },
+        { label: "Loro Piana", handle: "loro-piana" },
+        { label: "Prada", handle: "prada" },
+        { label: "Gucci", handle: "gucci" },
+      ]),
     ],
   },
   {
@@ -106,7 +138,6 @@ export const NAV_PRIMARY: NavItem[] = [
         { label: "Gucci", handle: "gucci" },
         { label: "Louis Vuitton", handle: "louis-vuitton" },
       ]),
-      CONDITION_LINKS("/categories/accessories"),
     ],
   },
   {
@@ -121,7 +152,6 @@ export const NAV_PRIMARY: NavItem[] = [
         { label: "Cartier", handle: "cartier" },
         { label: "Chanel", handle: "chanel" },
       ]),
-      CONDITION_LINKS("/categories/jewellery"),
     ],
   },
   { label: "Private Sourcing", href: "/private-sourcing" },
@@ -145,7 +175,14 @@ export const NAV_UTILITY_RIGHT = [{ label: "Concierge", href: "/concierge" }];
  * `/categories/[handle]` 404s for anything outside this list, so a category
  * can't be reached by URL-guessing when it isn't in the navigation.
  */
-export const SHOPPABLE_CATEGORIES = ["bags", "clothing", "accessories", "jewellery"] as const;
+export const SHOPPABLE_CATEGORIES = [
+  "bags",
+  "clothing",
+  "footwear",
+  "athleisure",
+  "accessories",
+  "jewellery",
+] as const;
 
 export const FOOTER_COLUMNS: NavColumn[] = [
   {
@@ -154,6 +191,8 @@ export const FOOTER_COLUMNS: NavColumn[] = [
       { label: "New Arrivals", href: "/new-arrivals" },
       { label: "Bags", href: "/categories/bags" },
       { label: "Clothing", href: "/categories/clothing" },
+      { label: "Footwear", href: "/categories/footwear" },
+      { label: "Athleisure", href: "/categories/athleisure" },
       { label: "Fine Jewellery", href: "/categories/jewellery" },
     ],
   },
@@ -236,8 +275,8 @@ export const CONCIERGE_SERVICES = [
     description: "Looking for a specific piece we don't currently have? We source on request.",
   },
   {
-    title: "Rare and archive pieces",
-    description: "For discontinued styles and collector pieces, concierge is often the fastest route.",
+    title: "Rare and hard-to-find pieces",
+    description: "For sold-out styles and limited editions, concierge is often the fastest route.",
   },
   {
     title: "Styling support",
@@ -249,6 +288,6 @@ export const CONCIERGE_SERVICES = [
   },
   {
     title: "After-sales support",
-    description: "Questions about an order, a return, or the condition of a piece after delivery.",
+    description: "Questions about an order, a return, or the care of a piece after delivery.",
   },
 ] as const;
