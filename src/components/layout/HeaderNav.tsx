@@ -130,7 +130,9 @@ export function HeaderNav() {
         </div>
 
         <Link href="/" aria-label={SITE_NAME} className="justify-self-center">
-          <Logo variant="dark" className="h-7 w-auto tablet:h-9" />
+          {/* The monogram's border frame carries built-in padding, so it runs
+              slightly taller than the wordmark did to keep equal optical weight. */}
+          <Logo variant="mark" className="h-9 w-auto tablet:h-11" />
         </Link>
 
         <div className="flex items-center justify-end gap-5 tablet:gap-6">
