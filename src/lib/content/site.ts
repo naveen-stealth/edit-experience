@@ -249,7 +249,7 @@ export const TRUST_POINTS: { title: string; description: string; icon: TrustPoin
     icon: "authenticated",
   },
   {
-    title: "A proper invoice",
+    title: "A real invoice",
     description: "Every purchase — online or in-store — is accompanied by a GST invoice.",
     icon: "invoice",
   },
@@ -259,7 +259,7 @@ export const TRUST_POINTS: { title: string; description: string; icon: TrustPoin
     icon: "store",
   },
   {
-    title: "Concierge, not chatbots",
+    title: "Concierge, not chatbot",
     description: "Questions about a piece, sourcing, or an order are answered by a person, on WhatsApp or in store.",
     icon: "concierge",
   },

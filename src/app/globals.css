@@ -104,6 +104,23 @@
 }
 
 /*
+ * CHROME HEIGHT — everything above the home hero: the sticky header, plus the
+ * utility bar from tablet up (it's hidden below). The hero subtracts this from
+ * 100svh so its bottom edge lands exactly on the first fold. Derived from the
+ * rendered chrome (header py-5 + logo h-9/h-11 + nav row) — if the header's
+ * vertical metrics change, re-measure and update both values.
+ */
+:root {
+  --chrome-h: 76px;
+}
+@media (min-width: 61.25rem) {
+  :root {
+    /* 31.4px utility bar + 130.4px header — fractions from text-micro's 15.4px line. */
+    --chrome-h: 161.8px;
+  }
+}
+
+/*
  * The page gutter, in one place. Container pads by it, full-bleed panels derive
  * their spine offset from it, and the carousel indents its first card by it —
  * so every text block on the page starts on the same vertical line regardless
