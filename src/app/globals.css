@@ -164,6 +164,22 @@
 }
 
 /*
+ * Trailing mirror of page-spine-pl, for horizontal scrollers. Without it a
+ * finite rail's last card stops flush against the viewport edge — the one
+ * scroll position with no breathing room on either side.
+ */
+@utility page-spine-pr {
+  padding-inline-end: max(
+    var(--page-gutter),
+    calc((100% - var(--container-page)) / 2 + var(--page-gutter))
+  );
+  scroll-padding-inline-end: max(
+    var(--page-gutter),
+    calc((100% - var(--container-page)) / 2 + var(--page-gutter))
+  );
+}
+
+/*
  * Thin, palette-matched scrollbar for tall inner panels (the filter rail). The
  * default two-tone OS track reads as a foreign element inside Ivory surfaces.
  */

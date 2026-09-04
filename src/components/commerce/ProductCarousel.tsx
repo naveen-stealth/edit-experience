@@ -41,7 +41,8 @@ function jumpTo(el: HTMLElement, left: number) {
  *
  * The rail bleeds to the viewport edge, but its first card is indented to the
  * page spine (`page-spine-pl`) so the leading card's image and title align with
- * the section heading above it.
+ * the section heading above it; `page-spine-pr` mirrors it so a finite rail
+ * scrolled to the end rests its last card on the same line, not the viewport edge.
  */
 export function ProductCarousel({
   products,
@@ -239,7 +240,7 @@ export function ProductCarousel({
     <div className="relative">
       <div
         ref={scrollerRef}
-        className="page-spine-pl flex snap-x snap-mandatory gap-(--grid-gutter) overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="page-spine-pl page-spine-pr flex snap-x snap-mandatory gap-(--grid-gutter) overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {items.map((product, i) => {
           /*
